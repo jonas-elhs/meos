@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }: let
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
   cfg = config.theme;
 in {
   options.theme = {
@@ -8,7 +13,7 @@ in {
       description = "The name of the theme";
     };
     color.themes = lib.mkOption {
-      type = lib.types.either (lib.types.enum [ "all" ]) (lib.types.listOf lib.types.str);
+      type = lib.types.either (lib.types.enum ["all"]) (lib.types.listOf lib.types.str);
       default = "all";
       description = "All the themes to build";
     };

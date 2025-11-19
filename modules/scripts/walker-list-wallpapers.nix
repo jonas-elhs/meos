@@ -1,4 +1,5 @@
-{ pkgs, ... }: pkgs.writeShellApplication {
+{pkgs, ...}:
+pkgs.writeShellApplication {
   name = "walker-list-wallpapers";
   text = ''
     Files=$(find -L ~/wallpapers -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.gif" -o -iname "*.webp" \))

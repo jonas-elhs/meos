@@ -1,5 +1,10 @@
-{ inputs, config, pkgs, ... }: {
-  home.groups = [ "wheel" "input" ];
+{
+  inputs,
+  config,
+  pkgs,
+  ...
+}: {
+  home.groups = ["wheel" "input"];
   home.fonts = with pkgs; [
     maple-nerd-font-mono
     maple-nerd-font-propo

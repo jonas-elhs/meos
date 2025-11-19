@@ -45,118 +45,124 @@ Notes:
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, ... }@inputs: let
+  outputs = {
+    self,
+    nixpkgs,
+    nixpkgs-stable,
+    home-manager,
+    ...
+  } @ inputs: let
     # Paths
     paths = rec {
-      hostsDir =                 ./hosts;
-      hostFile = host:           hostsDir + /${host}/configuration.nix;
-      hardwareFile = host:       hostsDir + /${host}/hardware-configuration.nix;
+      hostsDir = ./hosts;
+      hostFile = host: hostsDir + /${host}/configuration.nix;
+      hardwareFile = host: hostsDir + /${host}/hardware-configuration.nix;
 
-      usersDir = host:           ./hosts/${host}/users;
-      userFile = host: user:     (usersDir host) + /${user}.nix;
+      usersDir = host: ./hosts/${host}/users;
+      userFile = host: user: (usersDir host) + /${user}.nix;
 
-      nixosModulesDir =          ./modules/nixos;
-      homeModulesDir =           ./modules/home;
+      nixosModulesDir = ./modules/nixos;
+      homeModulesDir = ./modules/home;
 
-      scriptsDir =               ./modules/scripts;
-      scriptFile = script:       scriptsDir + /${script};
+      scriptsDir = ./modules/scripts;
+      scriptFile = script: scriptsDir + /${script};
 
-      packagesDir =              ./packages;
-      packagesFile = package:     packagesDir + /${package};
+      packagesDir = ./packages;
+      packagesFile = package: packagesDir + /${package};
 
-      themesDir =                ./modules/themes;
-      themesFile = theme:        themesDir + /${theme}.nix;
+      themesDir = ./modules/themes;
+      themesFile = theme: themesDir + /${theme}.nix;
     };
 
     # Lib
     lib = nixpkgs.lib;
-    libx = (import ./lib) { inherit hosts paths nixpkgs; };
+    libx = (import ./lib) {inherit hosts paths nixpkgs;};
     hosts = libx.getHosts;
   in {
+    nixosConfigurations = libx.forEachHost (
+      host:
+        nixpkgs.lib.nixosSystem {
+          specialArgs = {inherit inputs host libx;};
+          modules = lib.flatten [
+            (paths.hostFile host)
+            (libx.listPaths paths.nixosModulesDir)
 
-    nixosConfigurations = libx.forEachHost (host:
-      nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs host libx; };
-        modules = lib.flatten [
-
-          (paths.hostFile host)
-          (libx.listPaths paths.nixosModulesDir)
-
-          ({ lib, config, ... }: {
-            # Hardware Configuration
-            imports = [
-              (paths.hardwareFile host)
-            ];
-
-            # Users
-            users.users = builtins.listToAttrs (
-              lib.forEach hosts.${host}.users (user: {
-                name = user;
-                value = {
-                  isNormalUser = true;
-                  extraGroups = libx.getUserGroups host user;
-                  initialPassword = user;
-                };
-              })
-            );
-            
-            # Hostname
-            networking.hostName = host;
-
-            # Required Experimental Features
-            nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-            # Scripts
-            environment.systemPackages = (libx.getScripts (libx.getSystem host) config);
-
-            # Packages
-            nixpkgs.overlays = [
-              (final: prev: libx.getPackages (libx.getSystem host))
-            ];
-
-            # Caches
-            nix.settings = {
-              trusted-users = [
-                "root"
-                "@wheel"
+            ({
+              lib,
+              config,
+              ...
+            }: {
+              # Hardware Configuration
+              imports = [
+                (paths.hardwareFile host)
               ];
-            };
-          })
 
-        ];
-      }
+              # Users
+              users.users = builtins.listToAttrs (
+                lib.forEach hosts.${host}.users (user: {
+                  name = user;
+                  value = {
+                    isNormalUser = true;
+                    extraGroups = libx.getUserGroups host user;
+                    initialPassword = user;
+                  };
+                })
+              );
+
+              # Hostname
+              networking.hostName = host;
+
+              # Required Experimental Features
+              nix.settings.experimental-features = ["nix-command" "flakes"];
+
+              # Scripts
+              environment.systemPackages = libx.getScripts (libx.getSystem host) config;
+
+              # Packages
+              nixpkgs.overlays = [
+                (final: prev: libx.getPackages (libx.getSystem host))
+              ];
+
+              # Caches
+              nix.settings = {
+                trusted-users = [
+                  "root"
+                  "@wheel"
+                ];
+              };
+            })
+          ];
+        }
     );
 
-    homeConfigurations = libx.forEachHome (host: user:
-      home-manager.lib.homeManagerConfiguration {
-        pkgs = libx.getSystemPkgs host;
-        extraSpecialArgs = { inherit inputs host user libx; };
-        modules = lib.flatten [
+    homeConfigurations = libx.forEachHome (
+      host: user:
+        home-manager.lib.homeManagerConfiguration {
+          pkgs = libx.getSystemPkgs host;
+          extraSpecialArgs = {inherit inputs host user libx;};
+          modules = lib.flatten [
+            (paths.userFile host user)
+            (libx.listPaths paths.homeModulesDir)
 
-          (paths.userFile host user)
-          (libx.listPaths paths.homeModulesDir)
+            inputs.zen-browser.homeModules.twilight
 
-          inputs.zen-browser.homeModules.twilight
+            ({config, ...}: {
+              # Themes
+              specialisation = libx.getThemeSpecialisations host user;
 
-          ({ config, ... }: {
-            # Themes
-            specialisation = libx.getThemeSpecialisations host user;
+              # Options
+              home.username = user;
+              home.homeDirectory = "/home/${user}";
+              programs.home-manager.enable = true;
+              home.stateVersion = (libx.getModuleConfig (paths.hostFile host)).system.stateVersion;
 
-            # Options
-            home.username = user;
-            home.homeDirectory = "/home/${user}";
-            programs.home-manager.enable = true;
-            home.stateVersion = (libx.getModuleConfig (paths.hostFile host)).system.stateVersion;
-
-            # Packages
-            nixpkgs.overlays = [
-              (final: prev: libx.getPackages (libx.getSystem host))
-            ];
-          })
-
-        ];
-      }
+              # Packages
+              nixpkgs.overlays = [
+                (final: prev: libx.getPackages (libx.getSystem host))
+              ];
+            })
+          ];
+        }
     );
-
   };
 }

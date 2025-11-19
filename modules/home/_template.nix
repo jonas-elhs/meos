@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }: let
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
   cfg = config.XXX;
   colors = config.theme.colors;
   layout = config.theme.layout;
@@ -13,12 +18,15 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    programs.XXX = {
-      enable = true;
-    } // {
-      default = {
-        
+    programs.XXX =
+      {
+        enable = true;
+      }
+      // {
+        default = {
+        };
+      }.${
+        cfg.style
       };
-    }.${cfg.style};
   };
 }

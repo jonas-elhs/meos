@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }: let
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
   cfg = config.boot-loader;
 in {
   options.boot-loader = {
@@ -58,17 +63,21 @@ in {
       enable = cfg.systemd-boot.enable;
       editor = false;
       extraEntries = lib.listToAttrs (
-                       lib.forEach cfg.extraEntries (
-                         entry: {
-                           name = "${entry.name}.conf";
-                           value = ''
-                             title ${entry.title}
-                             efi ${entry.efi}
-                             ${ if entry.sortKey != null then "sort-key ${entry.sortKey}" else "" }
-                           '';
-                         }
-                       )
-                     );
+        lib.forEach cfg.extraEntries (
+          entry: {
+            name = "${entry.name}.conf";
+            value = ''
+              title ${entry.title}
+              efi ${entry.efi}
+              ${
+                if entry.sortKey != null
+                then "sort-key ${entry.sortKey}"
+                else ""
+              }
+            '';
+          }
+        )
+      );
       extraInstallCommands = builtins.concatStringsSep "\n" (lib.forEach (lib.splitString "\n" cfg.extraConfig) (line: "echo ${line} >> /boot/loader/loader.conf"));
     };
   };

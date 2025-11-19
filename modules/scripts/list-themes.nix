@@ -1,6 +1,7 @@
-{ pkgs, ... }: pkgs.writeShellApplication {
+{pkgs, ...}:
+pkgs.writeShellApplication {
   name = "list-themes";
-  runtimeInputs = with pkgs; [ gnused coreutils home-manager ];
+  runtimeInputs = with pkgs; [gnused coreutils home-manager];
   text = ''
     generation_index=1
 

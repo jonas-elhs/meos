@@ -1,6 +1,12 @@
-{ config, pkgs, lib, inputs, ... }: let
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}: let
   cfg = config.hyprland;
-in{
+in {
   options.hyprland = {
     enable = lib.mkEnableOption "Hyprland";
   };

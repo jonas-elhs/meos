@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }: {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   hyprland.enable = true;
   bluetooth.enable = true;
   hardware-acceleration.enable = true;
@@ -67,14 +72,15 @@
     # END MAIL
 
     # FILES
-#    xfce.thunar
+    #    xfce.thunar
     kdePackages.dolphin
-#    pcmanfm
+    #    pcmanfm
     # END FILES
 
-    (python3.withPackages (python-pkgs: with python-pkgs; [
-      image-go-nord
-    ]))
+    (python3.withPackages (python-pkgs:
+      with python-pkgs; [
+        image-go-nord
+      ]))
   ];
 
   system.architecture = "x86_64-linux";

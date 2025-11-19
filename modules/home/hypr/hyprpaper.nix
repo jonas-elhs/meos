@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }: let
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
   cfg = config.hyprpaper;
   colors = config.theme.colors;
   layout = config.theme.layout;
@@ -15,10 +20,10 @@ in {
   config = lib.mkIf cfg.enable {
     services.hyprpaper = {
       enable = true;
-      
+
       settings = {
         preload = cfg.wallpaper;
-        wallpaper = ", ${cfg.wallpaper}"; 
+        wallpaper = ", ${cfg.wallpaper}";
       };
     };
 
