@@ -1,4 +1,4 @@
-{ config, pkgs, lib, libx, ... }: let
+{ config, pkgs, lib, libx, inputs, ... }: let
   cfg = config.hyprland;
   colors = config.theme.colors;
   layout = config.theme.layout;
@@ -28,6 +28,8 @@ in {
     wayland.windowManager.hyprland = {
       enable = true;
       plugins = cfg.plugins;
+      package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+      portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
     } // {
       default = let
         active = "rgba(${lib.removePrefix "#" colors.accent}ee)";
