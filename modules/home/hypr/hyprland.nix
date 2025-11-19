@@ -111,7 +111,7 @@ in {
               rounding_power = 2.0;
 
               layerrule = [
-                "blur on, match:namespace meshell-shell"
+                "blur true, match:namespace meshell-shell"
                 "ignore_alpha 0, match:namespace meshell-shell"
               ];
 
