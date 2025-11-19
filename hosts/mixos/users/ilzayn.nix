@@ -94,20 +94,6 @@
       inputs.hypr-dynamic-cursors.packages.${pkgs.stdenv.hostPlatform.system}.hypr-dynamic-cursors
     ];
   };
-  hyprlock = {
-    enable = false;
-    dm = true;
-  };
-  hyprpaper = {
-    enable = false;
-    wallpaper = "/home/ilzayn/.wall";
-    #wallpaper = "/home/ilzayn/wallpapers/moonlight.png";
-  };
-  waybar = {
-    enable = true;
-    gpu_hwmon = 5;
-    style = "vertical";
-  };
   git = {
     enable = true;
     name = "jonas-elhs";
@@ -120,7 +106,6 @@
   };
   kitty.enable = true;
   starship.enable = true;
-  # fish.enable = true;
   fastfetch.enable = true;
   zen.enable = true;
   anki.enable = true;
