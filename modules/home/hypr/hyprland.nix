@@ -102,17 +102,8 @@ in {
             rounding_power = 2.0;
 
             layerrule = [
-              "blur, waybar"
-              "ignorezero, waybar"
-
-              "blur, walker"
-              "ignorealpha 0.4, walker"
-
-              "blur, notifications"
-              "ignorezero, notifications"
-
-              "blur, meshell-shell"
-              "ignorezero, meshell-shell"
+              "blur on, match:namespace meshell-shell"
+              "ignore_alpha 0, match:namespace meshell-shell"
             ];
 
             shadow = {
