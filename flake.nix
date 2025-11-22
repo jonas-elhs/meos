@@ -39,7 +39,7 @@ Notes:
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hypr-dynamic-cursors = {
-      url = "github:VirtCode/hypr-dynamic-cursors/hooking-logs";
+      url = "github:VirtCode/hypr-dynamic-cursors";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.hyprland.follows = "hyprland";
     };
