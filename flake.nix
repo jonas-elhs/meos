@@ -1,11 +1,5 @@
-/*
-Notes:
-  Other User:
-    git config --global --add safe.directory /home/ilzayn/nixos
-    SKIP_SANITY_CHECKS=1 sudo -E home-manager switch --flake /home/ilzayn/nixos
-*/
 {
-  description = "Ilzayn NixOS";
+  description = "Jonas NixOS";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-unstable";

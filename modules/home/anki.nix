@@ -17,8 +17,8 @@ in {
       enable = true;
       language = "en_US";
       sync = {
-        usernameFile = "/home/ilzayn/nixos/secrets/anki-username.txt";
-        keyFile = "/home/ilzayn/nixos/secrets/anki-sync-key.txt";
+        usernameFile = "/home/jonas/nixos/secrets/anki-username.txt";
+        keyFile = "/home/jonas/nixos/secrets/anki-sync-key.txt";
       };
     };
   };

@@ -13,7 +13,7 @@
     alsa.enable = true;
   };
   home-manager.enable = true;
-  config-root = "/home/ilzayn/nixos";
+  config-root = "/home/jonas/nixos";
 
   boot-loader = {
     systemd-boot.enable = true;
@@ -33,13 +33,12 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   programs.zsh.enable = true;
-  users.users.ilzayn.shell = pkgs.zsh;
+  users.users.jonas.shell = pkgs.zsh;
 
   display-manager = {
-    # sddm.enable = true;
     autologin = {
       enable = true;
-      user = "ilzayn";
+      user = "jonas";
       command = "Hyprland";
     };
   };

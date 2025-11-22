@@ -70,8 +70,8 @@
     activeConfig = "meshell";
     systemd.enable = true;
   };
-  home.file.".config/quickshell/meshell".source = config.lib.file.mkOutOfStoreSymlink /home/ilzayn/meshell;
-  home.file.".config/nixCats-nvim".source = config.lib.file.mkOutOfStoreSymlink /home/ilzayn/mevim;
+  home.file.".config/quickshell/meshell".source = config.lib.file.mkOutOfStoreSymlink /home/jonas/meshell;
+  home.file.".config/nixCats-nvim".source = config.lib.file.mkOutOfStoreSymlink /home/jonas/mevim;
 
   home.pointerCursor = {
     enable = true;
