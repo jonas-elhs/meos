@@ -114,6 +114,9 @@
     enable = true;
     enableCompletion = true;
     syntaxHighlighting.enable = true;
+    historySubstringSearch = {
+      enable = true;
+    };
 
     history = {
       size = 10000;
@@ -126,6 +129,9 @@
 
       ZVM_SYSTEM_CLIPBOARD_ENABLED=true
       ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
+
+      bindkey -M vicmd 'k' history-substring-search-up
+      bindkey -M vicmd 'j' history-substring-search-down
     '';
 
     plugins = [
