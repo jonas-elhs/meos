@@ -40,7 +40,7 @@
     autologin = {
       enable = true;
       user = "jonas";
-      command = "Hyprland";
+      command = "start-hyprland";
     };
   };
 
