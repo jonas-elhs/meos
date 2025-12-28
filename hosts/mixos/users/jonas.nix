@@ -84,6 +84,10 @@
     x11.enable = true;
   };
 
+  home.sessionVariables = {
+    NIXOS_OZONE_WL = 1;
+  };
+
   nixpkgs.config.allowUnfree = true;
 
   hyprland = {
