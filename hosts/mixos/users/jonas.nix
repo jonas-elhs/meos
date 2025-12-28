@@ -51,15 +51,15 @@
         title = "18";
       };
       background = {
-        opacity = 0.5;
-        opacity_hex = "80";
+        opacity = 0.4;
+        opacity_hex = "66";
       };
       gap = {
         size = "20";
         inner = "10";
       };
       blur = {
-        size = "3";
+        size = "5";
         passes = "4";
       };
     };
