@@ -31,10 +31,6 @@ in {
             name = layout.font.mono;
             size = lib.toInt layout.font.size;
           };
-          keybindings = {
-            "ctrl+c" = "copy_or_interrupt";
-            "ctrl+v" = "paste_from_clipboard";
-          };
           settings = {
             background_opacity = layout.background.opacity;
             window_padding_width = 8;
