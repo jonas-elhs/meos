@@ -40,12 +40,16 @@ in {
         portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
       }
       // {
-        default = let
-          active = "rgba(${lib.removePrefix "#" colors.accent}ee)";
-          inactive = "rgba(${lib.removePrefix "#" colors.inactive}ee)";
-          dark-background = lib.removePrefix "#" colors.background.dark;
-        in {
+        default = {
           settings = {
+            source = [
+              "~/.config/hypr/colors.conf"
+            ];
+
+            xwayland = {
+              force_zero_scaling = true;
+            };
+
             debug = {
               disable_logs = false;
             };
@@ -100,8 +104,8 @@ in {
               gaps_in = libx.stringDivide layout.gap.size 2;
               gaps_out = layout.gap.size;
 
-              "col.active_border" = active;
-              "col.inactive_border" = inactive;
+              "col.active_border" = "$activeBorder";
+              "col.inactive_border" = "$inactiveBorder";
 
               layout = "master";
             };
@@ -119,7 +123,7 @@ in {
                 enabled = true;
                 range = 15;
                 render_power = 3;
-                color = "rgba(${dark-background}ee)";
+                color = "$shadow";
               };
               blur = {
                 enabled = true;

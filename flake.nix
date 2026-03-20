@@ -26,6 +26,9 @@
       url = "github:jonas-elhs/mevim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    metemplate = {
+      url = "path:/home/jonas/dev/metemplate";
+    };
 
     hyprland = {
       url = "github:hyprwm/Hyprland";
@@ -137,6 +140,7 @@
             (libx.listPaths paths.homeModulesDir)
 
             inputs.zen-browser.homeModules.twilight
+            inputs.metemplate.homeManagerModules.default
 
             ({config, ...}: {
               # Themes

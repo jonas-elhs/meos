@@ -18,10 +18,13 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
+    home.sessionVariables.STARSHIP_CONFIG = lib.mkForce "${config.xdg.configHome}/starship.toml";
     programs.starship =
       {
         enable = true;
         enableZshIntegration = false;
+        configPath = "${config.xdg.configHome}/starship_nocolors.toml";
+        # configPath = "${config.xdg.configHome}/starship_nocolors.toml";
         # enableFishIntegration = true;
       }
       // {
@@ -30,9 +33,6 @@ in {
           git_branch = lib.elemAt colors.gradient3 1;
           git_status = lib.elemAt colors.gradient3 2;
 
-          icon = colors.background.base;
-          background = colors.background.light;
-          foreground = colors.foreground.base;
           cmd_duration = colors.foreground.dark;
         in {
           settings = {
@@ -44,17 +44,18 @@ in {
             ];
             right_format = "$cmd_duration";
             continuation_prompt = "[┃]()";
+            palette = "generated";
 
             custom.folder_symbol = {
               command = ''git rev-parse --is-inside-work-tree &>/dev/null && echo "󰊢" || echo ""'';
-              format = "[](fg:${directory})[$output]($style)[](fg:${directory} bg:${background})";
-              style = "fg:${icon} bg:${directory}";
+              format = "[](fg:${directory})[$output]($style)[](fg:${directory} bg:background)";
+              style = "fg:icon bg:${directory}";
               when = true;
             };
 
             directory = {
-              format = "[ $path ($read_only )]($style)[](fg:${background})";
-              style = "fg:${foreground} bg:${background}";
+              format = "[ $path ($read_only )]($style)[](fg:background)";
+              style = "fg:foreground bg:background";
               read_only = "󰌾";
               truncation_symbol = "…/";
             };
@@ -65,19 +66,19 @@ in {
 
             git_branch = {
               format = lib.concatStrings [
-                "([](fg:${git_branch})[](fg:${icon} bg:${git_branch})[](fg:${git_branch} bg:${background})"
-                "[ $branch(:$remote_branch) ]($style)[](fg:${background}))"
+                "([](fg:${git_branch})[](fg:icon bg:${git_branch})[](fg:${git_branch} bg:background)"
+                "[ $branch(:$remote_branch) ]($style)[](fg:background))"
               ];
-              style = "fg:${foreground} bg:${background}";
+              style = "fg:foreground bg:background";
             };
 
             git_status = {
               format = lib.concatStrings [
-                "([](fg:${git_status})[](fg:${icon} bg:${git_status})[](fg:${git_status} bg:${background})"
+                "([](fg:${git_status})[](fg:icon bg:${git_status})[](fg:${git_status} bg:background)"
                 "[( $staged)( $untracked)( $deleted)( $modified)( $renamed)( $stashed)"
-                "( $conflicted)( $diverged)( $ahead)( $behind) ]($style)[](fg:${background}))"
+                "( $conflicted)( $diverged)( $ahead)( $behind) ]($style)[](fg:background))"
               ];
-              style = "fg:${foreground} bg:${background}";
+              style = "fg:foreground bg:background";
               staged = "";
               untracked = "";
               deleted = "";
@@ -96,12 +97,12 @@ in {
             };
 
             character = {
-              success_symbol = "[➜](fg:${foreground})";
-              error_symbol = "[➜](fg:${foreground})";
-              vimcmd_symbol = "[➜](fg:${foreground})";
-              vimcmd_replace_symbol = "[➜](fg:${foreground})";
-              vimcmd_replace_one_symbol = "[➜](fg:${foreground})";
-              vimcmd_visual_symbol = "[➜](fg:${foreground})";
+              success_symbol = "[➜](fg:foreground)";
+              error_symbol = "[➜](fg:foreground)";
+              vimcmd_symbol = "[➜](fg:foreground)";
+              vimcmd_replace_symbol = "[➜](fg:foreground)";
+              vimcmd_replace_one_symbol = "[➜](fg:foreground)";
+              vimcmd_visual_symbol = "[➜](fg:foreground)";
             };
           };
         };

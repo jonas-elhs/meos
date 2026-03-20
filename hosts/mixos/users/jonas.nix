@@ -4,6 +4,40 @@
   pkgs,
   ...
 }: {
+  programs.metemplate = {
+    enable = true;
+
+    projects = {
+      apple = {
+        config = {
+          values = ["color"];
+
+          templates = {
+            test = {
+              file = "test.txt";
+              out = "~/apple.txt";
+            };
+          };
+        };
+
+        values = {
+          test = {
+            color = "red";
+          };
+          test2 = {
+            color = "green";
+          };
+        };
+
+        templates = {
+          "test.txt" = ''
+            template: I like {{color}} apples;
+          '';
+        };
+      };
+    };
+  };
+
   home.groups = ["wheel" "input"];
   home.fonts = with pkgs; [
     maple-nerd-font-mono
