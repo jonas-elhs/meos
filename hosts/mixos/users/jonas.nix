@@ -70,7 +70,7 @@ in {
   ];
 
   home.packages = with pkgs; [
-    krita
+    # krita
     hyprpicker
     material-symbols
 
@@ -81,12 +81,27 @@ in {
     cmake
 
     inputs.meshell.packages.x86_64-linux.cli
-    inputs.mevim.packages.x86_64-linux.nvim
+    inputs.mevim.packages.x86_64-linux.neovim
 
     nasm
     llvmPackages_latest.bintools-unwrapped
 
     lazygit
+
+    uv
+
+    teams-for-linux
+
+    libnotify
+
+    obs-studio
+
+    jujutsu
+
+    davinci-resolve
+
+    mpv
+    pkg-config
   ];
 
   theme = {
@@ -158,7 +173,7 @@ in {
     persistentWorkspaces = 5;
     vertical = true;
     plugins = [
-      inputs.hypr-dynamic-cursors.packages.${pkgs.stdenv.hostPlatform.system}.hypr-dynamic-cursors
+      # inputs.hypr-dynamic-cursors.packages.${pkgs.stdenv.hostPlatform.system}.hypr-dynamic-cursors
     ];
   };
   git = {

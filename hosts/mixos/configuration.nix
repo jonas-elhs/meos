@@ -5,6 +5,11 @@
   ...
 }: {
   qt.enable = true;
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [];
+  };
+
   hyprland.enable = true;
   bluetooth.enable = true;
   hardware-acceleration.enable = true;
