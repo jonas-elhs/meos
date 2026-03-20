@@ -22,10 +22,9 @@ in {
     programs.starship =
       {
         enable = true;
-        enableZshIntegration = false;
         configPath = "${config.xdg.configHome}/starship_nocolors.toml";
         # configPath = "${config.xdg.configHome}/starship_nocolors.toml";
-        # enableFishIntegration = true;
+        enableFishIntegration = false;
       }
       // {
         default = let

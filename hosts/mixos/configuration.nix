@@ -32,10 +32,6 @@
   };
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  programs.zsh.enable = true;
-  users.users.jonas.shell = pkgs.zsh;
-  environment.pathsToLink = ["/share/zsh"];
-
   display-manager = {
     autologin = {
       enable = true;

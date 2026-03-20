@@ -173,36 +173,17 @@ in {
   zen.enable = true;
   anki.enable = true;
 
-  programs.zsh = {
+  programs.fish = {
     enable = true;
-    enableCompletion = true;
-    syntaxHighlighting.enable = true;
-    historySubstringSearch = {
-      enable = true;
-    };
+    shellInit = ''
+      fish_vi_key_bindings
+      set -g fish_autosuggestion_enabled 0
+      set -g fish_greeting
 
-    history = {
-      size = 10000;
-    };
-
-    initContent = ''
-      if ! [[ -o login ]]; then
-        eval "$(${pkgs.starship}/bin/starship init zsh)"
-      fi
-
-      ZVM_SYSTEM_CLIPBOARD_ENABLED=true
-      ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
-
-      bindkey -M vicmd 'k' history-substring-search-up
-      bindkey -M vicmd 'j' history-substring-search-down
+      if not status is-login && test "$TERM" != "dumb"
+        starship init fish | source
+      end
     '';
-
-    plugins = [
-      {
-        name = pkgs.zsh-vi-mode.pname;
-        src = pkgs.zsh-vi-mode.src;
-      }
-    ];
   };
 
   programs.fuzzel.enable = true;
