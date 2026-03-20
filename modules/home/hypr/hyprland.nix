@@ -115,8 +115,8 @@ in {
               rounding_power = 2.0;
 
               layerrule = [
-                "blur true, match:namespace meshell-shell"
-                "ignore_alpha 0, match:namespace meshell-shell"
+                "blur true, match:namespace meshell"
+                "ignore_alpha 0, match:namespace meshell"
               ];
 
               shadow = {
