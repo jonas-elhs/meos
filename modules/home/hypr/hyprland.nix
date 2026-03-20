@@ -62,7 +62,7 @@ in {
             workspace = builtins.genList (n: "${toString (n + 1)}, persistent:true") cfg.persistentWorkspaces;
 
             # ---------- PROGRAMS ---------- #
-            "$terminal" = "kitty";
+            "$terminal" = "ghostty";
             "$fileManager" = "dolphin";
             "$appLauncher" = "fuzzel";
             "$themeSwitcher" = "walker --modules themes";

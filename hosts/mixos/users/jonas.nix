@@ -2,8 +2,33 @@
   inputs,
   config,
   pkgs,
+  lib,
   ...
-}: {
+}: let
+  layout = config.theme.layout;
+in {
+  programs.ghostty = {
+    enable = true;
+    settings = {
+      theme = "system";
+      font-size = lib.toInt layout.font.size;
+      font-family = layout.font.mono;
+      background-opacity = layout.background.opacity;
+
+      window-padding-x = 8;
+      window-padding-y = 8;
+      window-padding-balance = true;
+
+      adjust-cursor-thickness = "250%";
+      adjust-underline-thickness = "25%";
+
+      command = "fish";
+      mouse-hide-while-typing = true;
+
+      custom-shader = "~/.config/ghostty/shaders/cursor_warp.glsl";
+    };
+  };
+
   programs.metemplate = {
     enable = true;
 
