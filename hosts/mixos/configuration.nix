@@ -46,6 +46,25 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  services.keyd = {
+    enable = true;
+
+    keyboards.default = {
+      settings = {
+        main = {
+          shift = "oneshot(shift)";
+          meta = "oneshot(meta)";
+          control = "oneshot(control)";
+          leftalt = "oneshot(alt)";
+          rightalt = "oneshot(altgr)";
+
+          capslock = "overload(control, esc)";
+          esc = "capslock";
+        };
+      };
+    };
+  };
+
   # TEMPORARY --- will move to nixos-modules
   # networking.wireless.enable = true;
   # END TEMPORARY
@@ -76,11 +95,6 @@
     kdePackages.dolphin
     #    pcmanfm
     # END FILES
-
-    (python3.withPackages (python-pkgs:
-      with python-pkgs; [
-        image-go-nord
-      ]))
   ];
 
   system.architecture = "x86_64-linux";
