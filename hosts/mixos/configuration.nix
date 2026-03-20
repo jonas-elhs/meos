@@ -4,6 +4,7 @@
   pkgs,
   ...
 }: {
+  qt.enable = true;
   hyprland.enable = true;
   bluetooth.enable = true;
   hardware-acceleration.enable = true;
@@ -41,6 +42,12 @@
   };
 
   nixpkgs.config.allowUnfree = true;
+
+  hardware.graphics = {
+    extraPackages = with pkgs; [
+      rocmPackages.clr.icd
+    ];
+  };
 
   services.keyd = {
     enable = true;

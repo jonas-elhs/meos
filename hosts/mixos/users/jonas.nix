@@ -117,12 +117,15 @@ in {
         size = "20";
         inner = "10";
       };
+      # css: filter: blur(calc(size * sqrt(passes) * 0.85px));
       blur = {
         size = "5";
         passes = "4";
       };
     };
   };
+
+  qt.enable = true;
 
   programs.quickshell = {
     enable = true;
@@ -145,6 +148,7 @@ in {
 
   home.sessionVariables = {
     NIXOS_OZONE_WL = 1;
+    QT_QPA_PLATFORM = "wayland";
   };
 
   nixpkgs.config.allowUnfree = true;
