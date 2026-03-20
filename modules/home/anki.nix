@@ -16,9 +16,11 @@ in {
     programs.anki = {
       enable = true;
       language = "en_US";
-      sync = {
-        usernameFile = "/home/jonas/nixos/secrets/anki-username.txt";
-        keyFile = "/home/jonas/nixos/secrets/anki-sync-key.txt";
+      profiles."User 1" = {
+        sync = {
+          usernameFile = "/home/jonas/nixos/secrets/anki-username.txt";
+          keyFile = "/home/jonas/nixos/secrets/anki-sync-key.txt";
+        };
       };
     };
   };
