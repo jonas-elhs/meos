@@ -5,7 +5,6 @@
   ...
 }: let
   cfg = config.XXX;
-  colors = config.theme.colors;
   layout = config.theme.layout;
 in {
   options.XXX = {

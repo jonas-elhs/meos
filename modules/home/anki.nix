@@ -5,7 +5,6 @@
   ...
 }: let
   cfg = config.anki;
-  colors = config.theme.colors;
   layout = config.theme.layout;
 in {
   options.anki = {

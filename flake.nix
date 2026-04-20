@@ -64,9 +64,6 @@
 
       packagesDir = ./packages;
       packagesFile = package: packagesDir + /${package};
-
-      themesDir = ./modules/themes;
-      themesFile = theme: themesDir + /${theme}.nix;
     };
 
     # Lib
@@ -143,9 +140,6 @@
             inputs.metemplate.homeManagerModules.default
 
             ({config, ...}: {
-              # Themes
-              specialisation = libx.getThemeSpecialisations host user;
-
               # Options
               home.username = user;
               home.homeDirectory = "/home/${user}";

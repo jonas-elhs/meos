@@ -7,23 +7,6 @@
   cfg = config.theme;
 in {
   options.theme = {
-    color.name = lib.mkOption {
-      type = lib.types.str;
-      default = "nordic";
-      description = "The name of the theme";
-    };
-    color.themes = lib.mkOption {
-      type = lib.types.either (lib.types.enum ["all"]) (lib.types.listOf lib.types.str);
-      default = "all";
-      description = "All the themes to build";
-    };
-
-    colors = lib.mkOption {
-      type = lib.types.attrs;
-      default = {};
-      description = "The colors of the theme";
-    };
-
     layout = lib.mkOption {
       type = lib.types.submodule {
         options = {
@@ -110,9 +93,5 @@ in {
       };
       description = "The global layout used by other configurations.";
     };
-  };
-
-  config = {
-    theme.colors = import ../themes/${config.theme.color.name}.nix;
   };
 }

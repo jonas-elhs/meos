@@ -105,10 +105,6 @@ in {
   ];
 
   theme = {
-    color = {
-      name = "nordic";
-      themes = "all";
-    };
     layout = {
       border = {
         width = "2";
@@ -188,7 +184,6 @@ in {
   };
   kitty.enable = true;
   starship.enable = true;
-  fastfetch.enable = true;
   zen.enable = true;
   anki.enable = true;
 

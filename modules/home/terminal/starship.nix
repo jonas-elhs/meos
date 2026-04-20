@@ -5,7 +5,6 @@
   ...
 }: let
   cfg = config.starship;
-  colors = config.theme.colors;
   layout = config.theme.layout;
 in {
   options.starship = {
@@ -23,16 +22,15 @@ in {
       {
         enable = true;
         configPath = "${config.xdg.configHome}/starship_nocolors.toml";
-        # configPath = "${config.xdg.configHome}/starship_nocolors.toml";
         enableFishIntegration = false;
       }
       // {
         default = let
-          directory = lib.elemAt colors.gradient3 0;
-          git_branch = lib.elemAt colors.gradient3 1;
-          git_status = lib.elemAt colors.gradient3 2;
+          directory = "#EBCB8B";
+          git_branch = "#81A1C1";
+          git_status = "#BE9DB8";
 
-          cmd_duration = colors.foreground.dark;
+          cmd_duration = "#434C5E";
         in {
           settings = {
             format = lib.concatStrings [

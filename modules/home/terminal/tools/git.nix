@@ -5,7 +5,6 @@
   ...
 }: let
   cfg = config.git;
-  colors = config.theme.colors;
   layout = config.theme.layout;
 in {
   options.git = {

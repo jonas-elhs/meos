@@ -6,7 +6,6 @@
   ...
 }: let
   cfg = config.zen;
-  colors = config.theme.colors;
   layout = config.theme.layout;
 in {
   options.zen = {
@@ -25,11 +24,11 @@ in {
       }
       // {
         default = let
-          accent = colors.accent;
-          background = colors.background.base;
-          text = colors.foreground.base;
-          highlight = colors.foreground.dark;
-          inactive = colors.inactive;
+          accent = "#80B3B2";
+          background = "#242933";
+          text = "#C0C8D8";
+          highlight = "#434C5E";
+          inactive = "#4C566A";
         in {
           policies = {
             DisableAppUpdate = true;
