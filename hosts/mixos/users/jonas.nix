@@ -187,6 +187,7 @@ in {
   zen.enable = true;
   anki.enable = true;
 
+  # grim -g "$(slurp -w 0)" - | wl-copy
   programs.fish = {
     enable = true;
     shellInit = ''

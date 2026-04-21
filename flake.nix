@@ -59,9 +59,6 @@
       nixosModulesDir = ./modules/nixos;
       homeModulesDir = ./modules/home;
 
-      scriptsDir = ./modules/scripts;
-      scriptFile = script: scriptsDir + /${script};
-
       packagesDir = ./packages;
       packagesFile = package: packagesDir + /${package};
     };
@@ -106,9 +103,6 @@
 
               # Required Experimental Features
               nix.settings.experimental-features = ["nix-command" "flakes"];
-
-              # Scripts
-              environment.systemPackages = libx.getScripts (libx.getSystem host) config;
 
               # Packages
               nixpkgs.overlays = [
