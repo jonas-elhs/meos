@@ -1,9 +1,17 @@
 {
-  config,
-  lib,
   pkgs,
+  config,
   ...
 }: {
+  networking.hostName = config.preferences.hostname;
+  nix.settings.experimental-features = ["nix-command" "flakes"];
+
+  users.users.${config.preferences.username} = {
+    isNormalUser = true;
+    extraGroups = ["wheel" "input"];
+    initialPassword = config.preferences.username;
+  };
+
   qt.enable = true;
   programs.nix-ld = {
     enable = true;
@@ -11,15 +19,22 @@
   };
 
   hyprland.enable = true;
-  bluetooth.enable = true;
-  hardware-acceleration.enable = true;
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+  };
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+    extraPackages = with pkgs; [
+      rocmPackages.clr.icd
+    ];
+  };
   pipewire = {
     enable = true;
     pulse.enable = true;
     alsa.enable = true;
   };
-  home-manager.enable = true;
-  config-root = "/home/jonas/nixos";
 
   boot-loader = {
     systemd-boot.enable = true;
@@ -41,18 +56,12 @@
   display-manager = {
     autologin = {
       enable = true;
-      user = "jonas";
+      user = config.preferences.username;
       command = "start-hyprland";
     };
   };
 
   nixpkgs.config.allowUnfree = true;
-
-  hardware.graphics = {
-    extraPackages = with pkgs; [
-      rocmPackages.clr.icd
-    ];
-  };
 
   services.keyd = {
     enable = true;
@@ -83,6 +92,8 @@
   # END TEMPORARY
 
   environment.systemPackages = with pkgs; [
+    home-manager
+
     # TEMPORARY --- will move to home-manager
     wl-clipboard
     cliphist
@@ -105,6 +116,5 @@
     # END FILES
   ];
 
-  system.architecture = "x86_64-linux";
   system.stateVersion = "24.11";
 }

@@ -7,6 +7,12 @@
 }: let
   layout = config.theme.layout;
 in {
+  home.username = "jonas";
+  home.homeDirectory = "/home/jonas";
+  programs.home-manager.enable = true;
+
+  home.stateVersion = "24.11";
+
   programs.ghostty = {
     enable = true;
     settings = {
@@ -63,13 +69,12 @@ in {
     };
   };
 
-  home.groups = ["wheel" "input"];
-  home.fonts = with pkgs; [
-    maple-nerd-font-mono
-    maple-nerd-font-propo
-  ];
-
+  fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
+    # Fonts
+    (pkgs.callPackage ../../../packages/maple-nerd-font-mono.nix {})
+    (pkgs.callPackage ../../../packages/maple-nerd-font-propo.nix {})
+
     # krita
     hyprpicker
     material-symbols
@@ -169,7 +174,7 @@ in {
     persistentWorkspaces = 5;
     vertical = true;
     plugins = [
-      # inputs.hypr-dynamic-cursors.packages.${pkgs.stdenv.hostPlatform.system}.hypr-dynamic-cursors
+      inputs.hypr-dynamic-cursors.packages.${pkgs.stdenv.hostPlatform.system}.hypr-dynamic-cursors
     ];
   };
   git = {

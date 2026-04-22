@@ -100,7 +100,7 @@ in {
             general = {
               border_size = layout.border.width;
 
-              gaps_in = libx.stringDivide layout.gap.size 2;
+              gaps_in = toString ((lib.toInt layout.gap.size) / 2);
               gaps_out = layout.gap.size;
 
               "col.active_border" = "$activeBorder";

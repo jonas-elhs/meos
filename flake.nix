@@ -47,106 +47,58 @@
     home-manager,
     ...
   } @ inputs: let
-    # Paths
-    paths = rec {
-      hostsDir = ./hosts;
-      hostFile = host: hostsDir + /${host}/configuration.nix;
-      hardwareFile = host: hostsDir + /${host}/hardware-configuration.nix;
+    inherit (nixpkgs) lib;
+    inherit (lib.fileset) toList fileFilter;
 
-      usersDir = host: ./hosts/${host}/users;
-      userFile = host: user: (usersDir host) + /${user}.nix;
+    isNixModule = file:
+      file.hasExt "nix"
+      && file.name != "flake.nix"
+      && !lib.hasPrefix "_" file.name;
+    importTree = path:
+      toList (fileFilter isNixModule path);
 
-      nixosModulesDir = ./modules/nixos;
-      homeModulesDir = ./modules/home;
+    pkgs = nixpkgs.legacyPackages.${system};
 
-      packagesDir = ./packages;
-      packagesFile = package: packagesDir + /${package};
+    host = "mixos";
+    user = "jonas";
+    system = "x86_64-linux";
+  in {
+    nixosConfigurations.mixos = nixpkgs.lib.nixosSystem {
+      specialArgs = {inherit inputs;};
+      modules = lib.flatten [
+        ./hosts/mixos/configuration.nix
+        ./hosts/mixos/hardware-configuration.nix
+
+        (importTree ./modules/nixos)
+
+        {
+          options = {
+            preferences = {
+              hostname = lib.mkOption {
+                type = lib.types.str;
+                default = host;
+              };
+              username = lib.mkOption {
+                type = lib.types.str;
+                default = user;
+              };
+            };
+          };
+        }
+      ];
     };
 
-    # Lib
-    lib = nixpkgs.lib;
-    libx = (import ./lib) {inherit hosts paths nixpkgs;};
-    hosts = libx.getHosts;
-  in {
-    nixosConfigurations = libx.forEachHost (
-      host:
-        nixpkgs.lib.nixosSystem {
-          specialArgs = {inherit inputs host libx;};
-          modules = lib.flatten [
-            (paths.hostFile host)
-            (libx.listPaths paths.nixosModulesDir)
+    homeConfigurations.jonas = home-manager.lib.homeManagerConfiguration {
+      inherit pkgs;
+      extraSpecialArgs = {inherit inputs;};
+      modules = lib.flatten [
+        ./hosts/mixos/users/jonas.nix
 
-            ({
-              lib,
-              config,
-              ...
-            }: {
-              # Hardware Configuration
-              imports = [
-                (paths.hardwareFile host)
-              ];
+        (importTree ./modules/home)
 
-              # Users
-              users.users = builtins.listToAttrs (
-                lib.forEach hosts.${host}.users (user: {
-                  name = user;
-                  value = {
-                    isNormalUser = true;
-                    extraGroups = libx.getUserGroups host user;
-                    initialPassword = user;
-                  };
-                })
-              );
-
-              # Hostname
-              networking.hostName = host;
-
-              # Required Experimental Features
-              nix.settings.experimental-features = ["nix-command" "flakes"];
-
-              # Packages
-              nixpkgs.overlays = [
-                (final: prev: libx.getPackages (libx.getSystem host))
-              ];
-
-              # Caches
-              nix.settings = {
-                trusted-users = [
-                  "root"
-                  "@wheel"
-                ];
-              };
-            })
-          ];
-        }
-    );
-
-    homeConfigurations = libx.forEachHome (
-      host: user:
-        home-manager.lib.homeManagerConfiguration {
-          pkgs = libx.getSystemPkgs host;
-          extraSpecialArgs = {inherit inputs host user libx;};
-          modules = lib.flatten [
-            (paths.userFile host user)
-            (libx.listPaths paths.homeModulesDir)
-
-            inputs.zen-browser.homeModules.twilight
-            inputs.metemplate.homeManagerModules.default
-
-            ({config, ...}: {
-              # Options
-              home.username = user;
-              home.homeDirectory = "/home/${user}";
-              programs.home-manager.enable = true;
-              home.stateVersion = (libx.getModuleConfig (paths.hostFile host)).system.stateVersion;
-
-              # Packages
-              nixpkgs.overlays = [
-                (final: prev: libx.getPackages (libx.getSystem host))
-              ];
-            })
-          ];
-        }
-    );
+        inputs.zen-browser.homeModules.twilight
+        inputs.metemplate.homeManagerModules.default
+      ];
+    };
   };
 }
