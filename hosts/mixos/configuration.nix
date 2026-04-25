@@ -2,6 +2,7 @@
   pkgs,
   config,
   inputs,
+  wrappers,
   ...
 }: {
   environment.sessionVariables = {
@@ -105,6 +106,26 @@
   ];
 
   environment.systemPackages = with pkgs; [
+    ## Wrapped Programs
+    (wrappers.wrappers.git.wrap {
+      inherit pkgs;
+      settings = {
+        user = {
+          name = "jonas-elhs";
+          email = "jonas.elhs@outlook.com";
+        };
+      };
+    })
+    (wrappers.wrappers.jujutsu.wrap {
+      inherit pkgs;
+      settings = {
+        user = {
+          name = "jonas-elhs";
+          email = "jonas.elhs@outlook.com";
+        };
+      };
+    })
+
     # krita
     hyprpicker
     fuzzel
@@ -130,8 +151,6 @@
     libnotify
 
     obs-studio
-
-    jujutsu
 
     davinci-resolve
 

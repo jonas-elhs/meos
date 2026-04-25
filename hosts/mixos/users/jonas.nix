@@ -113,11 +113,6 @@ in {
       inputs.hypr-dynamic-cursors.packages.${pkgs.stdenv.hostPlatform.system}.hypr-dynamic-cursors
     ];
   };
-  git = {
-    enable = true;
-    name = "jonas-elhs";
-    email = "jonas.elhs@outlook.com";
-  };
 
   hypridle = {
     enable = true;

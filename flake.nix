@@ -9,6 +9,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    wrappers = {
+      url = "github:BirdeeHub/nix-wrapper-modules";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -44,6 +49,7 @@
   outputs = {
     self,
     nixpkgs,
+    wrappers,
     home-manager,
     ...
   } @ inputs: let
@@ -64,7 +70,7 @@
     system = "x86_64-linux";
   in {
     nixosConfigurations.mixos = nixpkgs.lib.nixosSystem {
-      specialArgs = {inherit inputs;};
+      specialArgs = {inherit inputs wrappers;};
       modules = lib.flatten [
         ./hosts/mixos/configuration.nix
         ./hosts/mixos/hardware-configuration.nix
