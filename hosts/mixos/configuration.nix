@@ -1,8 +1,15 @@
 {
   pkgs,
   config,
+  inputs,
   ...
 }: {
+  environment.sessionVariables = {
+    EDITOR = "nvim";
+    NIXOS_OZONE_WL = 1;
+    QT_QPA_PLATFORM = "wayland";
+  };
+
   networking.hostName = config.preferences.hostname;
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
@@ -13,10 +20,7 @@
   };
 
   qt.enable = true;
-  programs.nix-ld = {
-    enable = true;
-    libraries = with pkgs; [];
-  };
+  programs.nix-ld.enable = true;
 
   hyprland.enable = true;
   hardware.bluetooth = {
@@ -91,7 +95,49 @@
   i18n.defaultLocale = "en_US.UTF-8";
   # END TEMPORARY
 
+  # Fonts
+  fonts.fontconfig.enable = true;
+  fonts.packages = with pkgs; [
+    (callPackage ../../packages/maple-nerd-font-mono.nix {})
+    (callPackage ../../packages/maple-nerd-font-propo.nix {})
+
+    material-symbols
+  ];
+
   environment.systemPackages = with pkgs; [
+    # krita
+    hyprpicker
+    fuzzel
+
+    rustc
+    cargo
+    gcc
+    gnumake
+    cmake
+
+    inputs.meshell.packages.x86_64-linux.cli
+    inputs.mevim.packages.x86_64-linux.neovim
+
+    nasm
+    llvmPackages_latest.bintools-unwrapped
+
+    lazygit
+
+    uv
+
+    teams-for-linux
+
+    libnotify
+
+    obs-studio
+
+    jujutsu
+
+    davinci-resolve
+
+    mpv
+    pkg-config
+
     home-manager
 
     # TEMPORARY --- will move to home-manager

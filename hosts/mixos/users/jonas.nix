@@ -7,12 +7,6 @@
 }: let
   layout = config.theme.layout;
 in {
-  home.username = "jonas";
-  home.homeDirectory = "/home/jonas";
-  programs.home-manager.enable = true;
-
-  home.stateVersion = "24.11";
-
   programs.ghostty = {
     enable = true;
     settings = {
@@ -69,46 +63,6 @@ in {
     };
   };
 
-  fonts.fontconfig.enable = true;
-  home.packages = with pkgs; [
-    # Fonts
-    (pkgs.callPackage ../../../packages/maple-nerd-font-mono.nix {})
-    (pkgs.callPackage ../../../packages/maple-nerd-font-propo.nix {})
-
-    # krita
-    hyprpicker
-    material-symbols
-
-    rustc
-    cargo
-    gcc
-    gnumake
-    cmake
-
-    inputs.meshell.packages.x86_64-linux.cli
-    inputs.mevim.packages.x86_64-linux.neovim
-
-    nasm
-    llvmPackages_latest.bintools-unwrapped
-
-    lazygit
-
-    uv
-
-    teams-for-linux
-
-    libnotify
-
-    obs-studio
-
-    jujutsu
-
-    davinci-resolve
-
-    mpv
-    pkg-config
-  ];
-
   theme = {
     layout = {
       border = {
@@ -151,24 +105,6 @@ in {
   home.file.".config/quickshell/meshell".source = config.lib.file.mkOutOfStoreSymlink /home/jonas/dev/meshell;
   home.file.".config/quickshell/meshell2".source = config.lib.file.mkOutOfStoreSymlink /home/jonas/dev/meshell2;
 
-  home.pointerCursor = {
-    enable = true;
-
-    name = "phinger-cursors-dark";
-    package = pkgs.phinger-cursors;
-    size = 24;
-
-    gtk.enable = true;
-    x11.enable = true;
-  };
-
-  home.sessionVariables = {
-    NIXOS_OZONE_WL = 1;
-    QT_QPA_PLATFORM = "wayland";
-  };
-
-  nixpkgs.config.allowUnfree = true;
-
   hyprland = {
     enable = true;
     persistentWorkspaces = 5;
@@ -187,7 +123,6 @@ in {
     enable = true;
     lockCommand = "meshell lock";
   };
-  kitty.enable = true;
   starship.enable = true;
   zen.enable = true;
   anki.enable = true;
@@ -206,5 +141,23 @@ in {
     '';
   };
 
-  programs.fuzzel.enable = true;
+  ##############################
+  home.pointerCursor = {
+    enable = true;
+
+    # name = "googledot-black";
+    # package = pkgs.google-cursor;
+    name = "phinger-cursors-dark";
+    package = pkgs.phinger-cursors;
+    size = 24;
+
+    gtk.enable = true;
+    x11.enable = true;
+  };
+
+  home.username = "jonas";
+  home.homeDirectory = "/home/jonas";
+  programs.home-manager.enable = true;
+
+  home.stateVersion = "24.11";
 }
