@@ -29,40 +29,6 @@ in {
     };
   };
 
-  programs.metemplate = {
-    enable = true;
-
-    projects = {
-      apple = {
-        config = {
-          values = ["color"];
-
-          templates = {
-            test = {
-              file = "test.txt";
-              out = "~/apple.txt";
-            };
-          };
-        };
-
-        values = {
-          test = {
-            color = "red";
-          };
-          test2 = {
-            color = "green";
-          };
-        };
-
-        templates = {
-          "test.txt" = ''
-            template: I like {{color}} apples;
-          '';
-        };
-      };
-    };
-  };
-
   theme = {
     layout = {
       border = {
@@ -95,8 +61,6 @@ in {
     };
   };
 
-  qt.enable = true;
-
   programs.quickshell = {
     enable = true;
     activeConfig = "meshell";
@@ -119,20 +83,6 @@ in {
   };
   starship.enable = true;
   anki.enable = true;
-
-  # grim -g "$(slurp -w 0)" - | wl-copy
-  programs.fish = {
-    enable = true;
-    shellInit = ''
-      fish_vi_key_bindings
-      set -g fish_autosuggestion_enabled 0
-      set -g fish_greeting
-
-      if not status is-login && test "$TERM" != "dumb"
-        starship init fish | source
-      end
-    '';
-  };
 
   ##############################
   home.pointerCursor = {

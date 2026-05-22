@@ -134,8 +134,27 @@
     };
   };
 
+  programs.fish = {
+    enable = true;
+    package = wrappers.wrappers.fish.wrap {
+      inherit pkgs;
+
+      plugins = with pkgs.fishPlugins; [
+        autopair
+      ];
+      configFile.content = ''
+        fish_vi_key_bindings
+        set -g fish_autosuggestion_enabled 0
+        set -g fish_greeting
+
+        if not status is-login && test "$TERM" != "dumb"
+          starship init fish | source
+        end
+      '';
+    };
+  };
+
   environment.systemPackages = with pkgs; [
-    ## Wrapped Programs
     (wrappers.wrappers.jujutsu.wrap {
       inherit pkgs;
       settings = {
