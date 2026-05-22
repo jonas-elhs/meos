@@ -1,11 +1,9 @@
 {
-  config,
-  pkgs,
   lib,
+  config,
   ...
 }: let
   cfg = config.anki;
-  layout = config.theme.layout;
 in {
   options.anki = {
     enable = lib.mkEnableOption "Anki";

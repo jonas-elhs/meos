@@ -108,7 +108,6 @@ in {
   hyprland = {
     enable = true;
     persistentWorkspaces = 5;
-    vertical = true;
     plugins = [
       inputs.hypr-dynamic-cursors.packages.${pkgs.stdenv.hostPlatform.system}.hypr-dynamic-cursors
     ];
@@ -119,7 +118,6 @@ in {
     lockCommand = "meshell lock";
   };
   starship.enable = true;
-  zen.enable = true;
   anki.enable = true;
 
   # grim -g "$(slurp -w 0)" - | wl-copy
