@@ -23,7 +23,12 @@
   qt.enable = true;
   programs.nix-ld.enable = true;
 
-  hyprland.enable = true;
+  programs.hyprland = {
+    enable = true;
+    withUWSM = true;
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+  };
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
@@ -35,10 +40,18 @@
       rocmPackages.clr.icd
     ];
   };
-  pipewire = {
+  security.rtkit.enable = true;
+  services.pipewire = {
     enable = true;
+    audio.enable = true;
+    wireplumber.enable = true;
+
+    alsa = {
+      enable = true;
+      support32Bit = true;
+    };
+    jack.enable = true;
     pulse.enable = true;
-    alsa.enable = true;
   };
 
   boot-loader = {
@@ -58,11 +71,14 @@
   };
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  display-manager = {
-    autologin = {
-      enable = true;
-      user = config.preferences.username;
-      command = "start-hyprland";
+  services.greetd = {
+    enable = true;
+    settings = rec {
+      initial_session = {
+        user = config.preferences.username;
+        command = "start-hyprland";
+      };
+      default_session = initial_session;
     };
   };
 
@@ -137,7 +153,7 @@
     cmake
 
     inputs.meshell.packages.x86_64-linux.cli
-    inputs.mevim.packages.x86_64-linux.neovim
+    # inputs.mevim.packages.x86_64-linux.neovim
 
     nasm
     llvmPackages_latest.bintools-unwrapped
