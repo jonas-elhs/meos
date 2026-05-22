@@ -2,7 +2,7 @@
   description = "Jonas NixOS";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -30,9 +30,11 @@
     mevim = {
       url = "github:jonas-elhs/mevim";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.wrappers.follows = "wrappers";
     };
     metemplate = {
       url = "path:/home/jonas/dev/metemplate";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     hyprland = {
