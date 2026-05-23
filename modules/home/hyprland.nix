@@ -61,6 +61,7 @@ in {
 
         # ---------- AUTOSTART ---------- #
         exec-once = [
+          "quickshell"
           "hypridle"
           "sleep 1 && meshell lock"
           "wl-paste --type text --watch cliphist store"
@@ -106,8 +107,8 @@ in {
           rounding_power = 2.0;
 
           layerrule = [
-            "blur true, match:namespace meshell"
-            "ignore_alpha 0, match:namespace meshell"
+            "blur true, match:namespace meshell-shell"
+            "ignore_alpha 0, match:namespace meshell-shell"
           ];
 
           shadow = {

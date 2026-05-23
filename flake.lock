@@ -298,11 +298,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1779479172,
-        "narHash": "sha256-M4JsvbhxoddXhZrJqbBBroifAu55WfH+SPWmJjKudvo=",
+        "lastModified": 1779538437,
+        "narHash": "sha256-QTVm1lfienmW8sjcdnqwpffgMG8QPc+hBXUmZjQJOYs=",
         "owner": "hyprwm",
         "repo": "Hyprland",
-        "rev": "342f5bd9a3f5653d7fe5ce421ec1c05095485ab3",
+        "rev": "55b404b0a13518da3252cb176cf4a5a6ce9df2be",
         "type": "github"
       },
       "original": {
@@ -546,14 +546,15 @@
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
-        ]
+        ],
+        "wrappers": "wrappers"
       },
       "locked": {
-        "lastModified": 1770559422,
-        "narHash": "sha256-SBeyfWqBZcpJxy0c0pWNs0+PLiXbUBvcXDzc6a8zhl0=",
+        "lastModified": 1779603483,
+        "narHash": "sha256-iOAvXrXybXaO99rnk3VXVIidlINC1E3z+1wBMupuJDg=",
         "owner": "jonas-elhs",
         "repo": "meshell",
-        "rev": "b7e60e4d10d653ef003ecc18f458396d18e62a0b",
+        "rev": "ebe5bba03a00f01dead49ee99016fd77a13ab26d",
         "type": "github"
       },
       "original": {
@@ -677,11 +678,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1779526410,
-        "narHash": "sha256-uGOPNG17PPlJ63KnMZP527cNTjOvcAvKuFm5gX9Wnco=",
+        "lastModified": 1779553918,
+        "narHash": "sha256-d6X27OlRpInE6f7DVqyW7MTc3gcly9OhkN8YrexHKjs=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "2181dddce137cb6fc447e33f4ed0817efb707373",
+        "rev": "0472aa037f952540d84a0c18b171497f10b4367a",
         "type": "github"
       },
       "original": {
@@ -1011,7 +1012,7 @@
         "metemplate": "metemplate",
         "mevim": "mevim",
         "nixpkgs": "nixpkgs_2",
-        "wrappers": "wrappers",
+        "wrappers": "wrappers_2",
         "zen-browser": "zen-browser"
       }
     },
@@ -1065,17 +1066,35 @@
     "wrappers": {
       "inputs": {
         "nixpkgs": [
+          "meshell",
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1779535375,
-        "narHash": "sha256-4zWAtV1OtDEAarOKa9rbqh3P71bxedjDCiQ/Ai61rkg=",
-        "path": "/home/jonas/dev/nix-wrapper-modules",
+        "lastModified": 1779545883,
+        "narHash": "sha256-Of1h4erUHYyWGh3ys/Hiiw4itf3ZPiHs8LkWdpIsNdw=",
+        "path": "/home/jonas/dev/nix-wrapper-modules-quickshell",
         "type": "path"
       },
       "original": {
-        "path": "/home/jonas/dev/nix-wrapper-modules",
+        "path": "/home/jonas/dev/nix-wrapper-modules-quickshell",
+        "type": "path"
+      }
+    },
+    "wrappers_2": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1779542726,
+        "narHash": "sha256-g8RblnfMKrqhpxzYdXUBK3dGnqfl5iCsJ1adhKnSuNw=",
+        "path": "/home/jonas/dev/nix-wrapper-modules-hypridle",
+        "type": "path"
+      },
+      "original": {
+        "path": "/home/jonas/dev/nix-wrapper-modules-hypridle",
         "type": "path"
       }
     },

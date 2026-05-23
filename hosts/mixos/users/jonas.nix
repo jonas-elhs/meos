@@ -29,14 +29,6 @@ in {
     };
   };
 
-  programs.quickshell = {
-    enable = true;
-    activeConfig = "meshell";
-    systemd.enable = true;
-  };
-  home.file.".config/quickshell/meshell".source = config.lib.file.mkOutOfStoreSymlink /home/jonas/dev/meshell;
-  home.file.".config/quickshell/meshell2".source = config.lib.file.mkOutOfStoreSymlink /home/jonas/dev/meshell2;
-
   hyprland = {
     enable = true;
     persistentWorkspaces = 5;

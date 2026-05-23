@@ -209,8 +209,10 @@
     gnumake
     cmake
 
+    inputs.mevim.packages.x86_64-linux.default
     inputs.meshell.packages.x86_64-linux.cli
-    # inputs.mevim.packages.x86_64-linux.neovim
+    inputs.meshell.packages.x86_64-linux.quickshell
+    inputs.metemplate.packages.x86_64-linux.default
 
     nasm
     llvmPackages_latest.bintools-unwrapped
