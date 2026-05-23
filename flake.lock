@@ -1069,17 +1069,14 @@
         ]
       },
       "locked": {
-        "lastModified": 1779512817,
-        "narHash": "sha256-Y2S3mvEezyKL/A4XUkgVbhuvob9YKfnG25NuJDl8fuQ=",
-        "owner": "BirdeeHub",
-        "repo": "nix-wrapper-modules",
-        "rev": "8c90cbe3aaae094370b08f270682fc352fcbcb91",
-        "type": "github"
+        "lastModified": 1779535375,
+        "narHash": "sha256-4zWAtV1OtDEAarOKa9rbqh3P71bxedjDCiQ/Ai61rkg=",
+        "path": "/home/jonas/dev/nix-wrapper-modules",
+        "type": "path"
       },
       "original": {
-        "owner": "BirdeeHub",
-        "repo": "nix-wrapper-modules",
-        "type": "github"
+        "path": "/home/jonas/dev/nix-wrapper-modules",
+        "type": "path"
       }
     },
     "xdph": {

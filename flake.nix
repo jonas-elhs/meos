@@ -10,7 +10,8 @@
     };
 
     wrappers = {
-      url = "github:BirdeeHub/nix-wrapper-modules";
+      url = "path:/home/jonas/dev/nix-wrapper-modules";
+      # url = "github:BirdeeHub/nix-wrapper-modules";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

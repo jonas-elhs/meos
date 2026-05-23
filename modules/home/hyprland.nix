@@ -61,6 +61,7 @@ in {
 
         # ---------- AUTOSTART ---------- #
         exec-once = [
+          "hypridle"
           "sleep 1 && meshell lock"
           "wl-paste --type text --watch cliphist store"
           "wl-paste --type image --watch cliphist store"
