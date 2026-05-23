@@ -83,11 +83,11 @@
       },
       "locked": {
         "dir": "pkgs/firefox-addons",
-        "lastModified": 1779508957,
-        "narHash": "sha256-gNwsa7Hwp+pUNe9pvv2aFphcFnm8BoCUUQRm0HXJHD0=",
+        "lastModified": 1779595358,
+        "narHash": "sha256-wYTO3i1Xe1oh9lWP8cAcgtD4tJyWFQRcN1uxYpdcL1Q=",
         "owner": "rycee",
         "repo": "nur-expressions",
-        "rev": "3bd76938b820b6f7cf537fffa206bb6a73094b4f",
+        "rev": "3028f7f65d02928083359f8701507a8b35d8bf42",
         "type": "gitlab"
       },
       "original": {
@@ -164,11 +164,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1779507042,
-        "narHash": "sha256-7wOwi8B6D0BYsieZCnHZZj2sNUzgJhLoIVSfkwB7lxQ=",
+        "lastModified": 1779592288,
+        "narHash": "sha256-pVZwRFVFdHS3D3G07MiZQcSPENnv1xlYCJtfabkqd3Q=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "509ed3c603349a9d43de9e2ae6613baea6bd5b34",
+        "rev": "23703a32ef3d7803a2f1bb9909a3f46fc5185e37",
         "type": "github"
       },
       "original": {
@@ -298,11 +298,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1779538437,
-        "narHash": "sha256-QTVm1lfienmW8sjcdnqwpffgMG8QPc+hBXUmZjQJOYs=",
+        "lastModified": 1779565977,
+        "narHash": "sha256-OCzhgY7kXuFLczKPf7KjMFS04CPXMAdaiQ+M1kFJVT8=",
         "owner": "hyprwm",
         "repo": "Hyprland",
-        "rev": "55b404b0a13518da3252cb176cf4a5a6ce9df2be",
+        "rev": "abd4abb5e654707edba6f527058292333149f90f",
         "type": "github"
       },
       "original": {
@@ -550,11 +550,11 @@
         "wrappers": "wrappers"
       },
       "locked": {
-        "lastModified": 1779603483,
-        "narHash": "sha256-iOAvXrXybXaO99rnk3VXVIidlINC1E3z+1wBMupuJDg=",
+        "lastModified": 1779619136,
+        "narHash": "sha256-ndXRJntkHojjnLHCjakxZFC4j0NGR5HenJkVAWbRjd0=",
         "owner": "jonas-elhs",
         "repo": "meshell",
-        "rev": "ebe5bba03a00f01dead49ee99016fd77a13ab26d",
+        "rev": "424975bcdb4118f472ff8445d01053e4881b598a",
         "type": "github"
       },
       "original": {
@@ -611,11 +611,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1779373821,
-        "narHash": "sha256-tvja3R4r7WBZuQK6NtOsYQ/SQpVleeKTqyJhS5kUMl8=",
+        "lastModified": 1779555133,
+        "narHash": "sha256-ZXlzyhoEDis7U2TwURqGKlzWDhJe2gxb0D04uGfO/Dw=",
         "owner": "jonas-elhs",
         "repo": "mevim",
-        "rev": "a6912ffcbafe4ede57e01747b883ce1ca7c6deeb",
+        "rev": "97529e85a9cd27913a1d53fa3e551da798c2593c",
         "type": "github"
       },
       "original": {
@@ -678,11 +678,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1779553918,
-        "narHash": "sha256-d6X27OlRpInE6f7DVqyW7MTc3gcly9OhkN8YrexHKjs=",
+        "lastModified": 1779617478,
+        "narHash": "sha256-7G+6b0FLfYziaIKXp0DWIfWWwiqI2hf7TEoweVamvWE=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "0472aa037f952540d84a0c18b171497f10b4367a",
+        "rev": "8c65cc9e0f6d19feda272be37fe205ef50d4383f",
         "type": "github"
       },
       "original": {
@@ -1013,6 +1013,7 @@
         "mevim": "mevim",
         "nixpkgs": "nixpkgs_2",
         "wrappers": "wrappers_2",
+        "wrappers-quickshell": "wrappers-quickshell",
         "zen-browser": "zen-browser"
       }
     },
@@ -1071,8 +1072,25 @@
         ]
       },
       "locked": {
-        "lastModified": 1779545883,
-        "narHash": "sha256-Of1h4erUHYyWGh3ys/Hiiw4itf3ZPiHs8LkWdpIsNdw=",
+        "lastModified": 1779606792,
+        "narHash": "sha256-wAEhik4CEabc17BH1d6FDYuB0G4hZDBnFpG7jobqkyI=",
+        "path": "/home/jonas/dev/nix-wrapper-modules-quickshell",
+        "type": "path"
+      },
+      "original": {
+        "path": "/home/jonas/dev/nix-wrapper-modules-quickshell",
+        "type": "path"
+      }
+    },
+    "wrappers-quickshell": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1779606792,
+        "narHash": "sha256-wAEhik4CEabc17BH1d6FDYuB0G4hZDBnFpG7jobqkyI=",
         "path": "/home/jonas/dev/nix-wrapper-modules-quickshell",
         "type": "path"
       },
