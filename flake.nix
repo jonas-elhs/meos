@@ -10,7 +10,12 @@
     };
 
     wrappers = {
-      url = "path:/home/jonas/dev/nix-wrapper-modules";
+      url = "path:/home/jonas/dev/nix-wrapper-modules-hypridle";
+      # url = "github:BirdeeHub/nix-wrapper-modules";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    wrappers-quickshell = {
+      url = "path:/home/jonas/dev/nix-wrapper-modules-quickshell";
       # url = "github:BirdeeHub/nix-wrapper-modules";
       inputs.nixpkgs.follows = "nixpkgs";
     };
