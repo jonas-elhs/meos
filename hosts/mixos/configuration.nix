@@ -121,9 +121,9 @@
     material-symbols
   ];
 
-  environment.systemPackages = with pkgs; [
-    ## Wrapped Programs
-    (wrappers.wrappers.git.wrap {
+  programs.git = {
+    enable = true;
+    package = wrappers.wrappers.git.wrap {
       inherit pkgs;
       settings = {
         user = {
@@ -131,7 +131,11 @@
           email = "jonas.elhs@outlook.com";
         };
       };
-    })
+    };
+  };
+
+  environment.systemPackages = with pkgs; [
+    ## Wrapped Programs
     (wrappers.wrappers.jujutsu.wrap {
       inherit pkgs;
       settings = {
