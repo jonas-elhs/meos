@@ -29,14 +29,6 @@ in {
     };
   };
 
-  hyprland = {
-    enable = true;
-    persistentWorkspaces = 5;
-    plugins = [
-      inputs.hypr-dynamic-cursors.packages.${pkgs.stdenv.hostPlatform.system}.hypr-dynamic-cursors
-    ];
-  };
-
   starship.enable = true;
 
   ##############################
