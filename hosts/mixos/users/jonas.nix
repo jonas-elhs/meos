@@ -40,19 +40,6 @@ in {
   starship.enable = true;
 
   ##############################
-  home.pointerCursor = {
-    enable = true;
-
-    # name = "googledot-black";
-    # package = pkgs.google-cursor;
-    name = "phinger-cursors-dark";
-    package = pkgs.phinger-cursors;
-    size = 24;
-
-    gtk.enable = true;
-    x11.enable = true;
-  };
-
   theme = {
     layout = {
       border = {

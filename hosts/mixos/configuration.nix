@@ -9,6 +9,10 @@
     EDITOR = "nvim";
     NIXOS_OZONE_WL = 1;
     QT_QPA_PLATFORM = "wayland";
+
+    # googledot-black pkgs.google-cursor
+    XCURSOR_THEME = "phinger-cursors-dark";
+    XCURSOR_SIZE = 24;
   };
 
   networking.hostName = config.preferences.hostname;
@@ -198,6 +202,8 @@
         ];
       };
     })
+
+    phinger-cursors
 
     # krita
     hyprpicker
