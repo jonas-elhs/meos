@@ -180,23 +180,16 @@
 
     nasm
     llvmPackages_latest.bintools-unwrapped
-
     lazygit
-
     uv
-
     teams-for-linux
-
     libnotify
-
     obs-studio
-
     davinci-resolve
-
     mpv
     pkg-config
-
     home-manager
+    anki
 
     # TEMPORARY --- will move to home-manager
     wl-clipboard

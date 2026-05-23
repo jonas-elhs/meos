@@ -29,6 +29,38 @@ in {
     };
   };
 
+  programs.quickshell = {
+    enable = true;
+    activeConfig = "meshell";
+    systemd.enable = true;
+  };
+  home.file.".config/quickshell/meshell".source = config.lib.file.mkOutOfStoreSymlink /home/jonas/dev/meshell;
+  home.file.".config/quickshell/meshell2".source = config.lib.file.mkOutOfStoreSymlink /home/jonas/dev/meshell2;
+
+  hyprland = {
+    enable = true;
+    persistentWorkspaces = 5;
+    plugins = [
+      inputs.hypr-dynamic-cursors.packages.${pkgs.stdenv.hostPlatform.system}.hypr-dynamic-cursors
+    ];
+  };
+
+  starship.enable = true;
+
+  ##############################
+  home.pointerCursor = {
+    enable = true;
+
+    # name = "googledot-black";
+    # package = pkgs.google-cursor;
+    name = "phinger-cursors-dark";
+    package = pkgs.phinger-cursors;
+    size = 24;
+
+    gtk.enable = true;
+    x11.enable = true;
+  };
+
   theme = {
     layout = {
       border = {
@@ -59,43 +91,6 @@ in {
         passes = "4";
       };
     };
-  };
-
-  programs.quickshell = {
-    enable = true;
-    activeConfig = "meshell";
-    systemd.enable = true;
-  };
-  home.file.".config/quickshell/meshell".source = config.lib.file.mkOutOfStoreSymlink /home/jonas/dev/meshell;
-  home.file.".config/quickshell/meshell2".source = config.lib.file.mkOutOfStoreSymlink /home/jonas/dev/meshell2;
-
-  hyprland = {
-    enable = true;
-    persistentWorkspaces = 5;
-    plugins = [
-      inputs.hypr-dynamic-cursors.packages.${pkgs.stdenv.hostPlatform.system}.hypr-dynamic-cursors
-    ];
-  };
-
-  hypridle = {
-    enable = true;
-    lockCommand = "meshell lock";
-  };
-  starship.enable = true;
-  anki.enable = true;
-
-  ##############################
-  home.pointerCursor = {
-    enable = true;
-
-    # name = "googledot-black";
-    # package = pkgs.google-cursor;
-    name = "phinger-cursors-dark";
-    package = pkgs.phinger-cursors;
-    size = 24;
-
-    gtk.enable = true;
-    x11.enable = true;
   };
 
   home.username = "jonas";
