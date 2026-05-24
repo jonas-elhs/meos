@@ -244,6 +244,7 @@
 
     phinger-cursors
     runapp
+    hyprpolkitagent
 
     # krita
     hyprpicker

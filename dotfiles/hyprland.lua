@@ -36,8 +36,9 @@ hl.monitor({
 hl.on("hyprland.start", function()
   hl.exec_cmd("runapp hypridle")
   hl.exec_cmd("runapp quickshell")
-  hl.exec_cmd("runapp cursor-clip --daemon")
   hl.exec_cmd("sleep 1 && meshell lock")
+  hl.exec_cmd("runapp cursor-clip --daemon")
+  hl.exec_cmd("systemctl --user start hyprpolkitagent")
 end)
 
 hl.workspace_rule({
