@@ -21,7 +21,7 @@ local layout = {
 
 local terminal = "ghostty"
 local fileManager = "dolphin"
-local appLauncher = "fuzzel"
+local appLauncher = "fuzzel --launch-prefix=runapp"
 local themeSwitcher = "walker --modules themes"
 local wallpaperSwitcher = "walker --modules wallpapers"
 local browser = "zen-twilight"
@@ -34,9 +34,9 @@ hl.monitor({
 })
 
 hl.on("hyprland.start", function()
-  hl.exec_cmd("hypridle")
-  hl.exec_cmd("quickshell")
-  hl.exec_cmd("cursor-clip --daemon")
+  hl.exec_cmd("runapp hypridle")
+  hl.exec_cmd("runapp quickshell")
+  hl.exec_cmd("runapp cursor-clip --daemon")
   hl.exec_cmd("sleep 1 && meshell lock")
 end)
 
@@ -126,18 +126,18 @@ hl.bind(mod .. " + P", hl.dsp.global("meshell:powerMenu"))
 hl.bind(mod .. " + C", hl.dsp.global("meshell:pickHexColorCopy"))
 
 -- General
-hl.bind(mod .. " + Return", hl.dsp.exec_cmd(terminal))
-hl.bind(mod .. " + B", hl.dsp.exec_cmd(browser))
-hl.bind(mod .. " + Y", hl.dsp.exec_cmd("firefox"))
-hl.bind(mod .. " + R", hl.dsp.exec_cmd(appLauncher))
+hl.bind(mod .. " + Return", hl.dsp.exec_cmd("runapp " .. terminal))
+hl.bind(mod .. " + B", hl.dsp.exec_cmd("runapp " .. browser))
+hl.bind(mod .. " + Y", hl.dsp.exec_cmd("runapp firefox"))
+hl.bind(mod .. " + R", hl.dsp.exec_cmd("runapp " .. appLauncher))
 hl.bind(secondaryMod .. " + T", hl.dsp.exec_cmd(themeSwitcher))
 hl.bind(secondaryMod .. " + W", hl.dsp.exec_cmd(wallpaperSwitcher))
-hl.bind(mod .. " + E", hl.dsp.exec_cmd(fileManager))
+hl.bind(mod .. " + E", hl.dsp.exec_cmd("runapp " .. fileManager))
 
 hl.bind(mod .. " + Q", hl.dsp.window.close())
 hl.bind(secondaryMod .. " + Q", hl.dsp.exit()) -- TODO: https://github.com/hyprwm/hyprshutdown
 
-hl.bind(mod .. " + ALT + V", hl.dsp.exec_cmd("cursor-clip"))
+hl.bind(mod .. " + ALT + V", hl.dsp.exec_cmd("runapp cursor-clip"))
 
 hl.bind(mod .. " + V", hl.dsp.window.float())
 hl.bind(mod .. " + F", hl.dsp.window.fullscreen({ mode = "maximized" }))
@@ -145,7 +145,7 @@ hl.bind(secondaryMod .. " + F", hl.dsp.window.fullscreen({ mode = "fullscreen" }
 
 -- Utils
 -- hl.bind(secondaryMod .. " + L", hl.dsp.exec_cmd("loginctl lock-session"))
-hl.bind(secondaryMod .. " + S", hl.dsp.exec_cmd("screenshot"))
+hl.bind(secondaryMod .. " + S", hl.dsp.exec_cmd("runapp screenshot"))
 
 -- Layouts
 hl.bind(mod .. " + M", hl.dsp.layout("swapwithmaster"))

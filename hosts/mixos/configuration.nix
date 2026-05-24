@@ -119,7 +119,7 @@
     settings = rec {
       initial_session = {
         user = config.preferences.username;
-        command = "start-hyprland";
+        command = "${lib.getExe pkgs.uwsm} start hyprland.desktop";
       };
       default_session = initial_session;
     };
@@ -243,6 +243,7 @@
     })
 
     phinger-cursors
+    runapp
 
     # krita
     hyprpicker
