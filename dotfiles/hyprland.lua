@@ -136,7 +136,7 @@ hl.bind(secondaryMod .. " + W", hl.dsp.exec_cmd(wallpaperSwitcher))
 hl.bind(mod .. " + E", hl.dsp.exec_cmd("runapp " .. fileManager))
 
 hl.bind(mod .. " + Q", hl.dsp.window.close())
-hl.bind(secondaryMod .. " + Q", hl.dsp.exit()) -- TODO: https://github.com/hyprwm/hyprshutdown
+hl.bind(secondaryMod .. " + Q", hl.dsp.exec_cmd("hyprshutdown"))
 
 hl.bind(mod .. " + ALT + V", hl.dsp.exec_cmd("runapp cursor-clip"))
 
