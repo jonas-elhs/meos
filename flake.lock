@@ -1012,6 +1012,7 @@
         "mevim": "mevim",
         "nixpkgs": "nixpkgs_2",
         "wrappers": "wrappers",
+        "wrappers-ghostty": "wrappers-ghostty",
         "zen-browser": "zen-browser"
       }
     },
@@ -1077,6 +1078,26 @@
       "original": {
         "path": "/home/jonas/dev/nix-wrapper-modules-hypridle",
         "type": "path"
+      }
+    },
+    "wrappers-ghostty": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1779366353,
+        "narHash": "sha256-LQFQJ0HibV8qjKYIhG11+I2E3DclrUkXczKkgXWHXOQ=",
+        "owner": "TrustworthyAdult",
+        "repo": "nix-wrapper-modules",
+        "rev": "8dea37e1d510ee3687af092e6d08db385001551d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "TrustworthyAdult",
+        "repo": "nix-wrapper-modules",
+        "type": "github"
       }
     },
     "xdph": {

@@ -1,3 +1,32 @@
+# layout = {
+#   border = {
+#     width = "2";
+#     radius = {
+#       size = "10";
+#       inner = "7";
+#     };
+#   };
+#   font = {
+#     name = "MapleMono Nerd Font Propo";
+#     mono = "MapleMono Nerd Font Mono";
+#     sub = "10";
+#     size = "12";
+#     title = "18";
+#   };
+#   background = {
+#     opacity = 0.4;
+#     opacity_hex = "66";
+#   };
+#   gap = {
+#     size = "20";
+#     inner = "10";
+#   };
+#   # css: filter: blur(calc(size * sqrt(passes) * 0.85px));
+#   blur = {
+#     size = "5";
+#     passes = "4";
+#   };
+# };
 {
   lib,
   pkgs,
@@ -198,6 +227,29 @@
   };
 
   environment.systemPackages = with pkgs; [
+    (inputs.wrappers-ghostty.wrappers.ghostty.wrap {
+      inherit pkgs;
+
+      settings = {
+        theme = "system";
+        font-size = 12;
+        font-family = "MapleMono Nerd Font Mono";
+        background-opacity = 0.4;
+
+        window-padding-x = 8;
+        window-padding-y = 8;
+        window-padding-balance = true;
+
+        adjust-cursor-thickness = "250%";
+        adjust-underline-thickness = "25%";
+
+        command = "fish";
+        mouse-hide-while-typing = true;
+
+        custom-shader = "~/.config/ghostty/shaders/cursor_warp.glsl";
+      };
+    })
+
     (wrappers.wrappers.jujutsu.wrap {
       inherit pkgs;
 
