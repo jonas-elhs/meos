@@ -29,8 +29,6 @@ in {
     };
   };
 
-  starship.enable = true;
-
   ##############################
   theme = {
     layout = {

@@ -186,15 +186,14 @@
       plugins = with pkgs.fishPlugins; [
         autopair
       ];
-      configFile.content = ''
-        fish_vi_key_bindings
-        set -g fish_autosuggestion_enabled 0
-        set -g fish_greeting
-
-        if not status is-login && test "$TERM" != "dumb"
-          starship init fish | source
-        end
-      '';
+      configFile.content = lib.concatStringsSep "\n" [
+        ''
+          fish_vi_key_bindings
+          set -g fish_autosuggestion_enabled 0
+          set -g fish_greeting
+        ''
+        (builtins.readFile ../../dotfiles/fish_prompt.fish)
+      ];
     };
   };
 
