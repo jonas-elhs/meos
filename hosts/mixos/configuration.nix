@@ -274,7 +274,7 @@
 
     # TEMPORARY --- will move to home-manager
     wl-clipboard
-    cliphist
+    cursor-clip
 
     firefox
 

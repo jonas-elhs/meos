@@ -34,11 +34,10 @@ hl.monitor({
 })
 
 hl.on("hyprland.start", function()
-  hl.exec_cmd("quickshell")
   hl.exec_cmd("hypridle")
+  hl.exec_cmd("quickshell")
+  hl.exec_cmd("cursor-clip --daemon")
   hl.exec_cmd("sleep 1 && meshell lock")
-  hl.exec_cmd("wl-paste --type text --watch cliphist store")
-  hl.exec_cmd("wl-paste --type image --watch cliphist store")
 end)
 
 hl.workspace_rule({
@@ -137,6 +136,8 @@ hl.bind(mod .. " + E", hl.dsp.exec_cmd(fileManager))
 
 hl.bind(mod .. " + Q", hl.dsp.window.close())
 hl.bind(secondaryMod .. " + Q", hl.dsp.exit()) -- TODO: https://github.com/hyprwm/hyprshutdown
+
+hl.bind(mod .. " + ALT + V", hl.dsp.exec_cmd("cursor-clip"))
 
 hl.bind(mod .. " + V", hl.dsp.window.float())
 hl.bind(mod .. " + F", hl.dsp.window.fullscreen({ mode = "maximized" }))
