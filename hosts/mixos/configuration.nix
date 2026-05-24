@@ -36,6 +36,7 @@
       pluginLoading = let
         plugins = [
           inputs.hypr-dynamic-cursors.packages.${pkgs.stdenv.hostPlatform.system}.hypr-dynamic-cursors
+          pkgs.hyprlandPlugins.hyprcapture
         ];
         getPath = plugin:
           if lib.types.package.check plugin

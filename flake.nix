@@ -2,7 +2,8 @@
   description = "Jonas NixOS";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs";
+    nixpkgs.url = "path:/home/jonas/dev/nixpkgs";
+    # nixpkgs.url = "github:NixOS/nixpkgs";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -11,11 +12,6 @@
 
     wrappers = {
       url = "path:/home/jonas/dev/nix-wrapper-modules-hypridle";
-      # url = "github:BirdeeHub/nix-wrapper-modules";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    wrappers-quickshell = {
-      url = "path:/home/jonas/dev/nix-wrapper-modules-quickshell";
       # url = "github:BirdeeHub/nix-wrapper-modules";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -32,6 +28,7 @@
     meshell = {
       url = "github:jonas-elhs/meshell";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.wrappers.follows = "wrappers";
     };
     mevim = {
       url = "github:jonas-elhs/mevim";

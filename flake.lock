@@ -547,7 +547,9 @@
         "nixpkgs": [
           "nixpkgs"
         ],
-        "wrappers": "wrappers"
+        "wrappers": [
+          "wrappers"
+        ]
       },
       "locked": {
         "lastModified": 1779619136,
@@ -678,17 +680,14 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1779617478,
-        "narHash": "sha256-7G+6b0FLfYziaIKXp0DWIfWWwiqI2hf7TEoweVamvWE=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "8c65cc9e0f6d19feda272be37fe205ef50d4383f",
-        "type": "github"
+        "lastModified": 1779725577,
+        "narHash": "sha256-bkFrSrDDWGuOdGIE2COgG7XEShrfHLbFh/9rmUZtg/8=",
+        "path": "/home/jonas/dev/nixpkgs",
+        "type": "path"
       },
       "original": {
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "type": "github"
+        "path": "/home/jonas/dev/nixpkgs",
+        "type": "path"
       }
     },
     "plugins-colorful-winsep-nvim": {
@@ -1012,8 +1011,7 @@
         "metemplate": "metemplate",
         "mevim": "mevim",
         "nixpkgs": "nixpkgs_2",
-        "wrappers": "wrappers_2",
-        "wrappers-quickshell": "wrappers-quickshell",
+        "wrappers": "wrappers",
         "zen-browser": "zen-browser"
       }
     },
@@ -1067,47 +1065,12 @@
     "wrappers": {
       "inputs": {
         "nixpkgs": [
-          "meshell",
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1779606792,
-        "narHash": "sha256-wAEhik4CEabc17BH1d6FDYuB0G4hZDBnFpG7jobqkyI=",
-        "path": "/home/jonas/dev/nix-wrapper-modules-quickshell",
-        "type": "path"
-      },
-      "original": {
-        "path": "/home/jonas/dev/nix-wrapper-modules-quickshell",
-        "type": "path"
-      }
-    },
-    "wrappers-quickshell": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1779606792,
-        "narHash": "sha256-wAEhik4CEabc17BH1d6FDYuB0G4hZDBnFpG7jobqkyI=",
-        "path": "/home/jonas/dev/nix-wrapper-modules-quickshell",
-        "type": "path"
-      },
-      "original": {
-        "path": "/home/jonas/dev/nix-wrapper-modules-quickshell",
-        "type": "path"
-      }
-    },
-    "wrappers_2": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1779542726,
-        "narHash": "sha256-g8RblnfMKrqhpxzYdXUBK3dGnqfl5iCsJ1adhKnSuNw=",
+        "lastModified": 1779730829,
+        "narHash": "sha256-LHwH9g0s30f6mRul/6cU25KVP1ItnWXWUH31X9t4Ja4=",
         "path": "/home/jonas/dev/nix-wrapper-modules-hypridle",
         "type": "path"
       },

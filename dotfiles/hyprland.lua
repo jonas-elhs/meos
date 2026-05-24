@@ -42,7 +42,7 @@ hl.on("hyprland.start", function()
 end)
 
 hl.workspace_rule({
-  workspace = "1-5",
+  workspace = "r[1-5]",
   persistent = true,
 })
 
@@ -60,7 +60,27 @@ hl.animation({
   style = "slidevert",
 })
 
+if hl.plugin.dynamic_cursors ~= nil then
+  hl.config({
+    plugin = {
+      dynamic_cursors = {
+        enabled = true,
+        mode = "stretch",
+        threshold = 2,
+
+        shake = {
+          enabled = false,
+        },
+      },
+    },
+  })
+end
+
 hl.config({
+  debug = {
+    disable_logs = false,
+  },
+
   xwayland = {
     force_zero_scaling = true,
   },
@@ -68,18 +88,18 @@ hl.config({
   master = {
     mfact = 0.65,
   },
-
-  plugin = {
-    dynamic_cursors = {
-      enabled = true,
-      mode = "stretch",
-      threshold = 2,
-
-      shake = {
-        enabled = false,
-      },
-    },
-  },
+  --
+  -- plugin = {
+  --   dynamic_cursors = {
+  --     enabled = true,
+  --     mode = "stretch",
+  --     threshold = 2,
+  --
+  --     shake = {
+  --       enabled = false,
+  --     },
+  --   },
+  -- },
 
   general = {
     layout = "master",
@@ -144,9 +164,11 @@ hl.bind(mod .. " + V", hl.dsp.window.float())
 hl.bind(mod .. " + F", hl.dsp.window.fullscreen({ mode = "maximized" }))
 hl.bind(secondaryMod .. " + F", hl.dsp.window.fullscreen({ mode = "fullscreen" }))
 
--- Utils
--- hl.bind(secondaryMod .. " + L", hl.dsp.exec_cmd("loginctl lock-session"))
-hl.bind(secondaryMod .. " + S", hl.dsp.exec_cmd("runapp screenshot"))
+if hl.plugin.hyprcapture ~= nil then
+  hl.bind(secondaryMod .. " + S", hl.plugin.hyprcapture.open)
+  -- bind = SUPER SHIFT, W, hyprcapture:open,window
+  -- bind = SUPER SHIFT, F, hyprcapture:open,fullscreen
+end
 
 -- Layouts
 hl.bind(mod .. " + M", hl.dsp.layout("swapwithmaster"))
