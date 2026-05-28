@@ -5,11 +5,6 @@
     nixpkgs.url = "path:/home/jonas/dev/nixpkgs";
     # nixpkgs.url = "github:NixOS/nixpkgs";
 
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     wrappers = {
       url = "path:/home/jonas/dev/nix-wrapper-modules-hypridle";
       # url = "github:BirdeeHub/nix-wrapper-modules";
@@ -84,7 +79,7 @@
         ./hosts/mixos/configuration.nix
         ./hosts/mixos/hardware-configuration.nix
 
-        (importTree ./modules/nixos)
+        (importTree ./modules)
 
         {
           options = {
@@ -100,19 +95,6 @@
             };
           };
         }
-      ];
-    };
-
-    homeConfigurations.jonas = home-manager.lib.homeManagerConfiguration {
-      inherit pkgs;
-      extraSpecialArgs = {inherit inputs;};
-      modules = lib.flatten [
-        ./hosts/mixos/users/jonas.nix
-
-        (importTree ./modules/home)
-
-        inputs.zen-browser.homeModules.twilight
-        inputs.metemplate.homeManagerModules.default
       ];
     };
   };

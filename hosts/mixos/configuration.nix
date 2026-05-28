@@ -176,14 +176,8 @@
     };
   };
 
-  # TEMPORARY --- will move to nixos-modules
-  # networking.wireless.enable = true;
-  # END TEMPORARY
-
-  # TEMPORARY --- will move to nixos-modules
   time.timeZone = "Europe/Berlin";
   i18n.defaultLocale = "en_US.UTF-8";
-  # END TEMPORARY
 
   # Fonts
   fonts.fontconfig.enable = true;
@@ -324,29 +318,22 @@
     davinci-resolve
     mpv
     pkg-config
-    home-manager
     anki
 
-    # TEMPORARY --- will move to home-manager
     wl-clipboard
     cursor-clip
 
     firefox
 
     tree
-    # END TEMPORARY
 
-    # MAIL
     thunderbird
-    mailspring # wayland problem?
+    mailspring
     bluemail
-    # END MAIL
 
-    # FILES
-    #    xfce.thunar
+    thunar
     kdePackages.dolphin
-    #    pcmanfm
-    # END FILES
+    pcmanfm
   ];
 
   system.stateVersion = "24.11";
