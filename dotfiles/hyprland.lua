@@ -1,4 +1,4 @@
--- require("~/.config/hypr/colors.lua")
+local colors = dofile(os.getenv("HOME") .. "/.config/hypr/colors.lua")
 
 local layout = {
   border = {
@@ -108,8 +108,8 @@ hl.config({
     border_size = tonumber(layout.border.width),
 
     col = {
-      active_border = accent_color,
-      inactive_border = inactive_color,
+      active_border = colors.accent,
+      inactive_border = colors.inactive,
     },
   },
 
@@ -126,7 +126,7 @@ hl.config({
     shadow = {
       -- enabled = true,
       range = 15,
-      color = dark_background_color,
+      color = colors.background_dark,
     },
   },
 
