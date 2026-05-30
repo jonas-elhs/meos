@@ -18,5 +18,6 @@
       in "echo '${config}' >> /boot/loader/loader.conf";
     };
   };
+
   boot.kernelPackages = pkgs.linuxPackages_latest;
 }
