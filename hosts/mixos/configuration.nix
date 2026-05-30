@@ -127,20 +127,15 @@
     pulse.enable = true;
   };
 
-  boot-loader = {
-    systemd-boot.enable = true;
+  boot.loader = {
     timeout = 10;
-    extraConfig = ''
-      auto-entries no
-    '';
-    extraEntries = [
-      {
-        name = "windows11";
-        title = "Windows 11";
-        efi = "/EFI/Microsoft/boot/bootmgfw.efi";
-        sortKey = "a_windows";
-      }
-    ];
+    efi.canTouchEfiVariables = true;
+
+    systemd-boot = {
+      enable = true;
+      editor = false;
+      sortKey = "z_nixos";
+    };
   };
   boot.kernelPackages = pkgs.linuxPackages_latest;
 

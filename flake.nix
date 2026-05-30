@@ -54,7 +54,6 @@
     self,
     nixpkgs,
     wrappers,
-    home-manager,
     ...
   } @ inputs: let
     inherit (nixpkgs) lib;
@@ -78,8 +77,6 @@
       modules = lib.flatten [
         ./hosts/mixos/configuration.nix
         ./hosts/mixos/hardware-configuration.nix
-
-        (importTree ./modules)
 
         {
           options = {
