@@ -278,11 +278,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1782640197,
-        "narHash": "sha256-/KPaAKGDmVWCw8rr4ZZILg6wXxb9vl8sjkQ7FwWyuEI=",
+        "lastModified": 1782755845,
+        "narHash": "sha256-pMax4dvo/BbKCO2zvCT8fgziiWbfXGhRH0/5uF8pyd0=",
         "owner": "hyprwm",
         "repo": "Hyprland",
-        "rev": "28bbe66da7f2fc1f1613677f37511c67731fafd5",
+        "rev": "254d6bae775258b554e1d3a4a853f3bc244190d9",
         "type": "github"
       },
       "original": {
@@ -455,11 +455,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1782035033,
-        "narHash": "sha256-pUtCphVzH1iNUTMGdJr4+e/yzUXA6/DZwsn+cyfIVJU=",
+        "lastModified": 1782639496,
+        "narHash": "sha256-mjt47Xun3jPcGrXpGpYU85lzUnqvJ2rXLbQjVI1yvLo=",
         "owner": "hyprwm",
         "repo": "hyprutils",
-        "rev": "9d8bf6e810597152eef8906c670b96679af2faec",
+        "rev": "d2b40ffe7bfcb001bbf5888bb56ff646de53e7db",
         "type": "github"
       },
       "original": {
@@ -672,11 +672,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1782641136,
-        "narHash": "sha256-mFzkly4auct+3a/ZB84KYgX40aaN7a8380+GNCjaChM=",
+        "lastModified": 1782756744,
+        "narHash": "sha256-arl6jkuwwEq//PEEx/tt5hPT+0nbBGgKazin+n0izAM=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "f135e0877969a894712be58a8590cdcbb77dc811",
+        "rev": "04cdd1bf1970fee43fc2877ab6538c38bc9d4490",
         "type": "github"
       },
       "original": {
@@ -1107,7 +1107,7 @@
         ]
       },
       "locked": {
-        "lastModified": 1782641089,
+        "lastModified": 1782658899,
         "narHash": "sha256-V3ggnGznW4UYpRLDHeMI+wT5UCk0Sfiz5ruU73HQieo=",
         "path": "/home/jonas/dev/nix-wrapper-modules-hypridle",
         "type": "path"
@@ -1124,8 +1124,8 @@
         ]
       },
       "locked": {
-        "lastModified": 1782660947,
-        "narHash": "sha256-BPWCCCQwelozGS3v16kABThmholm259aFdD15Rc69gI=",
+        "lastModified": 1782661237,
+        "narHash": "sha256-Sj03o2NV3QB/EpJhCT0cwRq9xpkxRcjoRphzrI/u0C8=",
         "path": "/home/jonas/dev/wrappers-hyprland",
         "type": "path"
       },
