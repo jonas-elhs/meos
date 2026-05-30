@@ -11,6 +11,7 @@
 
       package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
       configFile = ../../dotfiles/hyprland.lua;
+      disableConfigValidation = true;
 
       plugins = [
         inputs.hypr-dynamic-cursors.packages.${pkgs.stdenv.hostPlatform.system}.hypr-dynamic-cursors
