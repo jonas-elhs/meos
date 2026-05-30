@@ -6,8 +6,7 @@
     # nixpkgs.url = "github:NixOS/nixpkgs";
 
     wrappers = {
-      url = "path:/home/jonas/dev/nix-wrapper-modules-hypridle";
-      # url = "github:BirdeeHub/nix-wrapper-modules";
+      url = "github:BirdeeHub/nix-wrapper-modules";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     wrappers-ghostty = {
@@ -59,12 +58,10 @@
     inherit (nixpkgs) lib;
     inherit (lib.fileset) toList fileFilter;
 
-    isNixModule = file:
-      file.hasExt "nix"
-      && file.name != "flake.nix"
-      && !lib.hasPrefix "_" file.name;
+    shouldImport = file:
+      !lib.hasPrefix "_" file.name;
     importTree = path:
-      toList (fileFilter isNixModule path);
+      toList (fileFilter shouldImport path);
 
     pkgs = nixpkgs.legacyPackages.${system};
 
@@ -72,11 +69,10 @@
     user = "jonas";
     system = "x86_64-linux";
   in {
-    nixosConfigurations.mixos = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.${host} = nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs wrappers;};
       modules = lib.flatten [
-        ./hosts/mixos/configuration.nix
-        ./hosts/mixos/hardware-configuration.nix
+        (importTree ./hosts/${host})
 
         {
           options = {
