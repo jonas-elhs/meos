@@ -43,5 +43,9 @@
     tree
 
     kdePackages.dolphin
+
+    (python3.withPackages (python-pkgs: [
+      python-pkgs.psutil
+    ]))
   ];
 }
