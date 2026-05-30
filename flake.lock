@@ -1117,6 +1117,23 @@
         "type": "path"
       }
     },
+    "wrappers-hyprland": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1782660947,
+        "narHash": "sha256-BPWCCCQwelozGS3v16kABThmholm259aFdD15Rc69gI=",
+        "path": "/home/jonas/dev/wrappers-hyprland",
+        "type": "path"
+      },
+      "original": {
+        "path": "/home/jonas/dev/wrappers-hyprland",
+        "type": "path"
+      }
+    },
     "xdph": {
       "inputs": {
         "hyprland-protocols": [

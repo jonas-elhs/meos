@@ -13,6 +13,10 @@
       url = "github:TrustworthyAdult/nix-wrapper-modules";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    wrappers-hyprland = {
+      url = "path:/home/jonas/dev/wrappers-hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     wrappers-hypridle = {
       url = "path:/home/jonas/dev/nix-wrapper-modules-hypridle";
       inputs.nixpkgs.follows = "nixpkgs";
