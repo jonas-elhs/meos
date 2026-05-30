@@ -1,10 +1,10 @@
-# TODO: try googledot-black pkgs.google-cursor
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
-    phinger-cursors
+    google-cursor
   ];
+
   environment.sessionVariables = {
-    XCURSOR_THEME = "phinger-cursors-dark";
-    XCURSOR_SIZE = 24;
+    XCURSOR_THEME = "GoogleDot-White";
+    XCURSOR_SIZE = 22;
   };
 }
