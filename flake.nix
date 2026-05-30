@@ -2,8 +2,8 @@
   description = "Jonas NixOS";
 
   inputs = {
-    nixpkgs.url = "path:/home/jonas/dev/nixpkgs";
-    # nixpkgs.url = "github:NixOS/nixpkgs";
+    nixpkgs.url = "github:NixOS/nixpkgs";
+    my-nixpkgs.url = "path:/home/jonas/dev/nixpkgs";
 
     wrappers = {
       url = "github:BirdeeHub/nix-wrapper-modules";
@@ -11,6 +11,10 @@
     };
     wrappers-ghostty = {
       url = "github:TrustworthyAdult/nix-wrapper-modules";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    wrappers-hypridle = {
+      url = "path:/home/jonas/dev/nix-wrapper-modules-hypridle";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -53,6 +57,7 @@
     self,
     nixpkgs,
     wrappers,
+    my-nixpkgs,
     ...
   } @ inputs: let
     inherit (nixpkgs) lib;
@@ -70,7 +75,7 @@
     system = "x86_64-linux";
   in {
     nixosConfigurations.${host} = nixpkgs.lib.nixosSystem {
-      specialArgs = {inherit inputs wrappers;};
+      specialArgs = {inherit inputs wrappers my-nixpkgs;};
       modules = lib.flatten [
         (importTree ./hosts/${host})
 

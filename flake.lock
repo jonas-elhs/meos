@@ -606,6 +606,18 @@
         "type": "github"
       }
     },
+    "my-nixpkgs": {
+      "locked": {
+        "lastModified": 1779980053,
+        "narHash": "sha256-zg/STvj1bwcpseo8re74xlC3ukB1smEDkwG6FnxgHqY=",
+        "path": "/home/jonas/dev/nixpkgs",
+        "type": "path"
+      },
+      "original": {
+        "path": "/home/jonas/dev/nixpkgs",
+        "type": "path"
+      }
+    },
     "neovim-nightly-overlay": {
       "inputs": {
         "flake-parts": "flake-parts",
@@ -660,14 +672,17 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1779980053,
-        "narHash": "sha256-zg/STvj1bwcpseo8re74xlC3ukB1smEDkwG6FnxgHqY=",
-        "path": "/home/jonas/dev/nixpkgs",
-        "type": "path"
+        "lastModified": 1780127817,
+        "narHash": "sha256-Pgogf0N8GFielFg4SZ7CqgJyAMY+rw/fwckYhsFcdFc=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "192eecd28b0c8fcd1934ee96c80b9a2b9e17775d",
+        "type": "github"
       },
       "original": {
-        "path": "/home/jonas/dev/nixpkgs",
-        "type": "path"
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "type": "github"
       }
     },
     "plugins-colorful-winsep-nvim": {
@@ -989,9 +1004,11 @@
         "meshell": "meshell",
         "metemplate": "metemplate",
         "mevim": "mevim",
+        "my-nixpkgs": "my-nixpkgs",
         "nixpkgs": "nixpkgs_2",
         "wrappers": "wrappers",
         "wrappers-ghostty": "wrappers-ghostty",
+        "wrappers-hypridle": "wrappers-hypridle",
         "zen-browser": "zen-browser"
       }
     },
@@ -1049,14 +1066,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1779730829,
-        "narHash": "sha256-LHwH9g0s30f6mRul/6cU25KVP1ItnWXWUH31X9t4Ja4=",
-        "path": "/home/jonas/dev/nix-wrapper-modules-hypridle",
-        "type": "path"
+        "lastModified": 1779886850,
+        "narHash": "sha256-Udj+9DzeLccvPKoW9Q8xFdqIhrw2jhYMoqxBv+8iWzo=",
+        "owner": "BirdeeHub",
+        "repo": "nix-wrapper-modules",
+        "rev": "168fd6f514a9f8fa47df4fdcf9ecd61db10aec68",
+        "type": "github"
       },
       "original": {
-        "path": "/home/jonas/dev/nix-wrapper-modules-hypridle",
-        "type": "path"
+        "owner": "BirdeeHub",
+        "repo": "nix-wrapper-modules",
+        "type": "github"
       }
     },
     "wrappers-ghostty": {
@@ -1077,6 +1097,23 @@
         "owner": "TrustworthyAdult",
         "repo": "nix-wrapper-modules",
         "type": "github"
+      }
+    },
+    "wrappers-hypridle": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1779730829,
+        "narHash": "sha256-LHwH9g0s30f6mRul/6cU25KVP1ItnWXWUH31X9t4Ja4=",
+        "path": "/home/jonas/dev/nix-wrapper-modules-hypridle",
+        "type": "path"
+      },
+      "original": {
+        "path": "/home/jonas/dev/nix-wrapper-modules-hypridle",
+        "type": "path"
       }
     },
     "xdph": {

@@ -27,7 +27,12 @@
 #     passes = "4";
 #   };
 # };
-{config, ...}: {
+{
+  pkgs,
+  config,
+  my-nixpkgs,
+  ...
+}: {
   environment.sessionVariables = {
     EDITOR = "nvim";
     NIXOS_OZONE_WL = 1;
@@ -43,7 +48,15 @@
   networking.hostName = config.preferences.hostname;
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs = {
+    config.allowUnfree = true;
+
+    overlays = [
+      (final: prev: {
+        hyprlandPlugins.hyprcapture = my-nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system}.hyprlandPlugins.hyprcapture;
+      })
+    ];
+  };
 
   system.stateVersion = "24.11";
 }
