@@ -33,6 +33,8 @@
   my-nixpkgs,
   ...
 }: {
+  services.gnome.gnome-keyring.enable = true;
+
   environment.sessionVariables = {
     EDITOR = "nvim";
     NIXOS_OZONE_WL = 1;
@@ -51,11 +53,11 @@
   nixpkgs = {
     config.allowUnfree = true;
 
-    overlays = [
-      (final: prev: {
-        hyprlandPlugins.hyprcapture = my-nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system}.hyprlandPlugins.hyprcapture;
-      })
-    ];
+    # overlays = [
+    #   (final: prev: {
+    #     hyprlandPlugins.hyprcapture = my-nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system}.hyprlandPlugins.hyprcapture;
+    #   })
+    # ];
   };
 
   system.stateVersion = "24.11";

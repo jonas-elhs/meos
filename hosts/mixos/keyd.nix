@@ -1,5 +1,5 @@
 # TODO: wrapper module (systemd service how??)
-{...}: {
+{
   services.keyd = {
     enable = true;
 
