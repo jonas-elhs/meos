@@ -10,7 +10,7 @@
       settings = {
         theme = "system";
         font-size = 12;
-        font-family = "MapleMono Nerd Font Mono";
+        font-family = "Maple Mono NF";
         background-opacity = 0.4;
 
         window-padding-x = 8;
