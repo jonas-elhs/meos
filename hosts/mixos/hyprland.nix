@@ -3,6 +3,11 @@
   inputs,
   ...
 }: {
+  environment.systemPackages = with pkgs; [
+    grim
+    ffmpeg
+    gpu-screen-recorder
+  ];
   programs.hyprland = {
     enable = true;
     withUWSM = true;
@@ -14,8 +19,8 @@
       disableConfigValidation = true;
 
       plugins = [
+        inputs.hyprcapture.packages.${pkgs.stdenv.hostPlatform.system}.default
         inputs.hypr-dynamic-cursors.packages.${pkgs.stdenv.hostPlatform.system}.hypr-dynamic-cursors
-        # inputs.my-nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system}.hyprlandPlugins.hyprcapture
       ];
     };
     portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;

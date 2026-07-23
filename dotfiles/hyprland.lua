@@ -167,6 +167,23 @@ hl.bind(mod .. " + F", hl.dsp.window.fullscreen({ mode = "maximized" }))
 hl.bind(secondaryMod .. " + F", hl.dsp.window.fullscreen({ mode = "fullscreen" }))
 
 if hl.plugin.hyprcapture ~= nil then
+  hl.config({
+    plugin = {
+      hyprcapture = {
+        window_background = "real",
+        notification_backend = "system",
+        allow_quick = true,
+        fusion_mode = true,
+        record_fps = 60,
+        record_codec = "auto",
+        record_window_fps_limit = 0,
+        record_window_real_bg_fps_limit = 0,
+        record_countdown_seconds = 3,
+        capture_fullscreen_clients_as_monitor = true,
+      },
+    },
+  })
+
   hl.bind(secondaryMod .. " + S", hl.plugin.hyprcapture.open)
   -- bind = SUPER SHIFT, W, hyprcapture:open,window
   -- bind = SUPER SHIFT, F, hyprcapture:open,fullscreen

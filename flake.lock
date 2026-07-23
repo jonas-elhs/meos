@@ -178,6 +178,34 @@
         "type": "github"
       }
     },
+    "hyprcapture": {
+      "inputs": {
+        "hyprland": [
+          "hyprland"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "systems": [
+          "hyprcapture",
+          "hyprland",
+          "systems"
+        ]
+      },
+      "locked": {
+        "lastModified": 1785167236,
+        "narHash": "sha256-a3xTocd0xCYqSQAByjotOa8M2PscdGQFDIlkTp/kFRo=",
+        "owner": "gfhdhytghd",
+        "repo": "HyprCapture",
+        "rev": "4dc50b1d29cedca982a8555960465730135cfa55",
+        "type": "github"
+      },
+      "original": {
+        "owner": "gfhdhytghd",
+        "repo": "HyprCapture",
+        "type": "github"
+      }
+    },
     "hyprcursor": {
       "inputs": {
         "hyprlang": [
@@ -1013,6 +1041,7 @@
       "inputs": {
         "firefox-addons": "firefox-addons",
         "hypr-dynamic-cursors": "hypr-dynamic-cursors",
+        "hyprcapture": "hyprcapture",
         "hyprland": "hyprland",
         "meshell": "meshell",
         "metemplate": "metemplate",

@@ -55,6 +55,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.hyprland.follows = "hyprland";
     };
+    hyprcapture = {
+      url = "github:gfhdhytghd/HyprCapture";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.hyprland.follows = "hyprland";
+    };
 
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
