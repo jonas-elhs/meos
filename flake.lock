@@ -82,11 +82,11 @@
       },
       "locked": {
         "dir": "pkgs/firefox-addons",
-        "lastModified": 1784692983,
-        "narHash": "sha256-5RE5jkpkTIrP2A4XS3D9KiC9NGXOcKKE90dpV/NNc/E=",
+        "lastModified": 1784779588,
+        "narHash": "sha256-1cXtLTxxjB5tpU0czxnYrP5Ymb42c51IIk7lmQvuYrU=",
         "owner": "rycee",
         "repo": "nur-expressions",
-        "rev": "27cc0aa451c1db33050b6b371268c755a5e85a49",
+        "rev": "a962e2f303ece3c4bf61c051a4854b97a6e72526",
         "type": "gitlab"
       },
       "original": {
@@ -255,11 +255,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1784725764,
-        "narHash": "sha256-rUTPcoVRpy8pxLOo9uxG05GRG+kumoDmtgFEUg3Ra8I=",
+        "lastModified": 1784738137,
+        "narHash": "sha256-+6Ei2gg7/ZdjieINcdNx/+BHgF+J59dOG8m65ZR0rnc=",
         "owner": "hyprwm",
         "repo": "Hyprland",
-        "rev": "4588b2958e0dcd6199aa258b19de9dc944f5947e",
+        "rev": "7d2ea270704c265dd100a7898e6186e49c6741a7",
         "type": "github"
       },
       "original": {
@@ -670,11 +670,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1784733010,
-        "narHash": "sha256-EUr77QI1+XzSOXqPWW90dZPzEVvPFfFbAGagslMxd+U=",
+        "lastModified": 1784814309,
+        "narHash": "sha256-vdI10vnoUeSsVbAY1t6WBlbLuhBbsaI3du9dP2Dj/n8=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "b7ed9466c52daaf275a801e6abf9850b6d941945",
+        "rev": "06996fa5158a2ab80402df30bd06b8ad7d6aae21",
         "type": "github"
       },
       "original": {
@@ -1018,6 +1018,7 @@
         "metemplate": "metemplate",
         "mevim": "mevim",
         "my-nixpkgs": "my-nixpkgs",
+        "nix-index-database": "nix-index-database",
         "nixpkgs": "nixpkgs_2",
         "wrappers": "wrappers",
         "wrappers-ghostty": "wrappers-ghostty",
