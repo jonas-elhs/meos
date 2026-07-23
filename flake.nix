@@ -55,6 +55,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.hyprland.follows = "hyprland";
     };
+
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -62,6 +67,7 @@
     nixpkgs,
     wrappers,
     my-nixpkgs,
+    nix-index-database,
     ...
   } @ inputs: let
     inherit (nixpkgs) lib;
@@ -82,6 +88,8 @@
       specialArgs = {inherit inputs wrappers my-nixpkgs;};
       modules = lib.flatten [
         (importTree ./hosts/${host})
+
+        nix-index-database.nixosModules.default
 
         {
           options = {

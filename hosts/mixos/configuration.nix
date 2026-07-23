@@ -27,12 +27,9 @@
 #     passes = "4";
 #   };
 # };
-{
-  pkgs,
-  config,
-  my-nixpkgs,
-  ...
-}: {
+{config, ...}: {
+  programs.nix-index-database.comma.enable = true;
+
   services.gnome.gnome-keyring.enable = true;
 
   environment.sessionVariables = {
