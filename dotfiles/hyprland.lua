@@ -41,10 +41,12 @@ hl.on("hyprland.start", function()
   hl.exec_cmd("systemctl --user start hyprpolkitagent")
 end)
 
-hl.workspace_rule({
-  workspace = "r[1-5]",
-  persistent = true,
-})
+for i = 1, 5 do
+  hl.workspace_rule({
+    workspace = tostring(i),
+    persistent = true,
+  })
+end
 
 hl.layer_rule({
   match = { namespace = "meshell-shell" },
@@ -196,5 +198,5 @@ end
 hl.bind(mod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
 hl.bind(mod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
-hl.bind(mod .. " + mouse_up", hl.dsp.focus({ workspace = "e+1" }))
-hl.bind(mod .. " + mouse_down", hl.dsp.focus({ workspace = "e-1" }))
+hl.bind(mod .. " + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
+hl.bind(mod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
