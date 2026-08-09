@@ -2,8 +2,7 @@
   description = "Jonas NixOS";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs";
-    my-nixpkgs.url = "path:/home/jonas/dev/nixpkgs";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     wrappers = {
       url = "github:BirdeeHub/nix-wrapper-modules";
@@ -71,7 +70,6 @@
     self,
     nixpkgs,
     wrappers,
-    my-nixpkgs,
     nix-index-database,
     ...
   } @ inputs: let
@@ -90,7 +88,7 @@
     system = "x86_64-linux";
   in {
     nixosConfigurations.${host} = nixpkgs.lib.nixosSystem {
-      specialArgs = {inherit inputs wrappers my-nixpkgs;};
+      specialArgs = {inherit inputs wrappers;};
       modules = lib.flatten [
         (importTree ./hosts/${host})
 
