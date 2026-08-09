@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   boot.loader = {
-    timeout = 10;
+    timeout = 0;
     efi.canTouchEfiVariables = true;
 
     systemd-boot = {

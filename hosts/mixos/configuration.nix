@@ -49,12 +49,6 @@
   nix.settings.experimental-features = ["nix-command" "flakes"];
   nixpkgs = {
     config.allowUnfree = true;
-
-    # overlays = [
-    #   (final: prev: {
-    #     hyprlandPlugins.hyprcapture = my-nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system}.hyprlandPlugins.hyprcapture;
-    #   })
-    # ];
   };
 
   system.stateVersion = "24.11";
