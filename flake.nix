@@ -17,7 +17,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     wrappers-hypridle = {
-      url = "path:/home/jonas/dev/nix-wrapper-modules-hypridle";
+      url = "path:/home/jonas/dev/wrappers-hypridle";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

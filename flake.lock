@@ -1104,13 +1104,13 @@
         ]
       },
       "locked": {
-        "lastModified": 1782658899,
-        "narHash": "sha256-V3ggnGznW4UYpRLDHeMI+wT5UCk0Sfiz5ruU73HQieo=",
-        "path": "/home/jonas/dev/nix-wrapper-modules-hypridle",
+        "lastModified": 1786797712,
+        "narHash": "sha256-b6QHXrygowql+UydhS0N4ofQLNF4Gj5KbV9JV4mTEOY=",
+        "path": "/home/jonas/dev/wrappers-hypridle",
         "type": "path"
       },
       "original": {
-        "path": "/home/jonas/dev/nix-wrapper-modules-hypridle",
+        "path": "/home/jonas/dev/wrappers-hypridle",
         "type": "path"
       }
     },
