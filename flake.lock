@@ -558,14 +558,17 @@
         "systems": "systems_2"
       },
       "locked": {
-        "lastModified": 1779979731,
-        "narHash": "sha256-+Pn18PzwbIW7cCFyBJr2HbWiFDejDAYmkny+anYM5Ig=",
-        "path": "/home/jonas/dev/metemplate",
-        "type": "path"
+        "lastModified": 1786794088,
+        "narHash": "sha256-+GJ9a+vS5QTZfBAWb6lZ4iePaP0bHLavP12jGH0V/Uk=",
+        "owner": "jonas-elhs",
+        "repo": "metemplate",
+        "rev": "da12ad96dbe2296d39200a60df01bcbe6181ec8a",
+        "type": "github"
       },
       "original": {
-        "path": "/home/jonas/dev/metemplate",
-        "type": "path"
+        "owner": "jonas-elhs",
+        "repo": "metemplate",
+        "type": "github"
       }
     },
     "mevim": {
@@ -1104,14 +1107,18 @@
         ]
       },
       "locked": {
-        "lastModified": 1786797712,
-        "narHash": "sha256-b6QHXrygowql+UydhS0N4ofQLNF4Gj5KbV9JV4mTEOY=",
-        "path": "/home/jonas/dev/wrappers-hypridle",
-        "type": "path"
+        "lastModified": 1786795046,
+        "narHash": "sha256-uj23k/wen7PL69VJ0jjChx9PIiaBF4jV86v2I8DaSOo=",
+        "owner": "jonas-elhs",
+        "repo": "nix-wrapper-modules",
+        "rev": "11733140bd1b6abef933aaac460734a243daa50c",
+        "type": "github"
       },
       "original": {
-        "path": "/home/jonas/dev/wrappers-hypridle",
-        "type": "path"
+        "owner": "jonas-elhs",
+        "ref": "hypridle/init",
+        "repo": "nix-wrapper-modules",
+        "type": "github"
       }
     },
     "wrappers-hyprland": {
@@ -1121,14 +1128,18 @@
         ]
       },
       "locked": {
-        "lastModified": 1784736663,
-        "narHash": "sha256-anr6wcmao2F3aPZYV0W0zyAAZUCyyRlh+Ktq9vhJUZ4=",
-        "path": "/home/jonas/dev/wrappers-hyprland",
-        "type": "path"
+        "lastModified": 1784734121,
+        "narHash": "sha256-Uc1r69a8PdHnX2YeGfBLg5FsAH+BHo188jSxzV83kQI=",
+        "owner": "jonas-elhs",
+        "repo": "nix-wrapper-modules",
+        "rev": "fa67e918488fedaec413316a8e3db8040a632e3a",
+        "type": "github"
       },
       "original": {
-        "path": "/home/jonas/dev/wrappers-hyprland",
-        "type": "path"
+        "owner": "jonas-elhs",
+        "ref": "push-kpmnkpssnozs",
+        "repo": "nix-wrapper-modules",
+        "type": "github"
       }
     },
     "xdph": {

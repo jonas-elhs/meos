@@ -13,11 +13,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     wrappers-hyprland = {
-      url = "path:/home/jonas/dev/wrappers-hyprland";
+      url = "github:jonas-elhs/nix-wrapper-modules/push-kpmnkpssnozs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     wrappers-hypridle = {
-      url = "path:/home/jonas/dev/wrappers-hypridle";
+      url = "github:jonas-elhs/nix-wrapper-modules/hypridle/init";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -41,7 +41,7 @@
       inputs.wrappers.follows = "wrappers";
     };
     metemplate = {
-      url = "path:/home/jonas/dev/metemplate";
+      url = "github:jonas-elhs/metemplate";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
