@@ -1,10 +1,10 @@
 {
   pkgs,
-  inputs,
+  wrappers,
   ...
 }: {
   environment.systemPackages = [
-    (inputs.wrappers-ghostty.wrappers.ghostty.wrap {
+    (wrappers.wrappers.ghostty.wrap {
       inherit pkgs;
 
       settings = {

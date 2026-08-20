@@ -1061,7 +1061,6 @@
         "nixpkgs": "nixpkgs_2",
         "preservation": "preservation",
         "wrappers": "wrappers",
-        "wrappers-ghostty": "wrappers-ghostty",
         "wrappers-hypridle": "wrappers-hypridle",
         "wrappers-hyprland": "wrappers-hyprland",
         "zen-browser": "zen-browser"
@@ -1113,26 +1112,6 @@
       },
       "original": {
         "owner": "BirdeeHub",
-        "repo": "nix-wrapper-modules",
-        "type": "github"
-      }
-    },
-    "wrappers-ghostty": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1786835516,
-        "narHash": "sha256-rNk57AZNz8/iFI8agiHJz3c8eDqa0ToNTsgA2ges+Wg=",
-        "owner": "TrustworthyAdult",
-        "repo": "nix-wrapper-modules",
-        "rev": "822f3f96d8f4698dcf2eebea1f4b3c49644010a0",
-        "type": "github"
-      },
-      "original": {
-        "owner": "TrustworthyAdult",
         "repo": "nix-wrapper-modules",
         "type": "github"
       }

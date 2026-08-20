@@ -14,10 +14,6 @@
       url = "github:BirdeeHub/nix-wrapper-modules";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    wrappers-ghostty = {
-      url = "github:TrustworthyAdult/nix-wrapper-modules";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     wrappers-hyprland = {
       url = "github:jonas-elhs/nix-wrapper-modules/push-kpmnkpssnozs";
       inputs.nixpkgs.follows = "nixpkgs";
