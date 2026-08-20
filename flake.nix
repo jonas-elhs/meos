@@ -68,13 +68,8 @@
     };
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    wrappers,
-    nix-index-database,
-    ...
-  } @ inputs: let
+  outputs = inputs: let
+    inherit (inputs) nixpkgs;
     inherit (nixpkgs) lib;
     inherit (lib.fileset) toList fileFilter;
 
@@ -83,20 +78,20 @@
     importTree = path:
       toList (fileFilter shouldImport path);
 
-    pkgs = nixpkgs.legacyPackages.${system};
-
     host = "mixos";
     user = "jonas";
-    system = "x86_64-linux";
   in {
     nixosConfigurations.${host} = nixpkgs.lib.nixosSystem {
-      specialArgs = {inherit inputs wrappers;};
+      specialArgs = {
+        inherit inputs;
+        inherit (inputs.wrappers) wrappers;
+      };
       modules = lib.flatten [
         (importTree ./hosts/${host})
 
-        nix-index-database.nixosModules.default
         inputs.disko.nixosModules.default
         inputs.preservation.nixosModules.default
+        inputs.nix-index-database.nixosModules.default
 
         {
           options = {

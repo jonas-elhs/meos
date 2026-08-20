@@ -6,7 +6,7 @@
   ...
 }: {
   environment.systemPackages = [
-    (wrappers.wrappers.fish.wrap {
+    (wrappers.fish.wrap {
       inherit pkgs;
 
       plugins = with pkgs.fishPlugins; [

@@ -4,7 +4,7 @@
   ...
 }: {
   environment.systemPackages = [
-    (wrappers.wrappers.jujutsu.wrap {
+    (wrappers.jujutsu.wrap {
       inherit pkgs;
 
       settings = {

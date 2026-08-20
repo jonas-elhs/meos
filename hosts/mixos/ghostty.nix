@@ -4,7 +4,7 @@
   ...
 }: {
   environment.systemPackages = [
-    (wrappers.wrappers.ghostty.wrap {
+    (wrappers.ghostty.wrap {
       inherit pkgs;
 
       settings = {

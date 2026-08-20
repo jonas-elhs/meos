@@ -4,7 +4,7 @@
   ...
 }: {
   environment.systemPackages = [
-    (wrappers.wrappers.git.wrap {
+    (wrappers.git.wrap {
       inherit pkgs;
 
       settings = {
