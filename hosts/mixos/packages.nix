@@ -3,6 +3,8 @@
   inputs,
   ...
 }: {
+  programs._1password-gui.enable = true;
+
   environment.systemPackages = with pkgs; [
     fd
     runapp
@@ -38,8 +40,6 @@
 
     wl-clipboard
     cursor-clip
-
-    firefox
 
     tree
 

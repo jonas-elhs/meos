@@ -38,6 +38,8 @@
           ".local/state/wireplumber"
           ".cache/mozilla/firefox"
           ".config/mozilla/firefox"
+          ".config/1Password"
+          ".ssh"
 
           ".config/metemplate"
           ".config/nvim-colors/"
