@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
+    preservation.url = "github:nix-community/preservation";
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -99,6 +100,7 @@
 
         nix-index-database.nixosModules.default
         inputs.disko.nixosModules.default
+        inputs.preservation.nixosModules.default
 
         {
           options = {

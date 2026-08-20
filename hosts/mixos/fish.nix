@@ -12,6 +12,10 @@
       plugins = with pkgs.fishPlugins; [
         autopair
       ];
+      shellAliases = {
+        # List files on tmpfs
+        lsTmpFiles = "sudo fd --one-file-system --base-directory / --type f --hidden --exclude '{tmp,etc/passwd}'";
+      };
       configFile.content = lib.concatStringsSep "\n" [
         ''
           # Config
