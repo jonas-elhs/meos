@@ -13,6 +13,7 @@
       directories = [
         "/var/lib/systemd/timers"
         "/var/lib/nixos"
+        "/var/db/sudo"
         "/var/log"
       ];
 
