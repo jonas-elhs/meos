@@ -1,3 +1,4 @@
+-- VARIABLES
 local colors = dofile(os.getenv("HOME") .. "/.config/hypr/colors.lua")
 
 local layout = {
@@ -22,10 +23,12 @@ local layout = {
 local terminal = "ghostty"
 local fileManager = "dolphin"
 local appLauncher = "fuzzel --launch-prefix=runapp"
-local themeSwitcher = "walker --modules themes"
-local wallpaperSwitcher = "walker --modules wallpapers"
-local browser = "zen-twilight"
+local browser = "firefox"
 
+local mod = "SUPER"
+local secondaryMod = "SUPER + SHIFT"
+
+-- MONITORS
 hl.monitor({
   output = "HDMI-A-2",
   mode = "3840x2160@60",
@@ -33,14 +36,24 @@ hl.monitor({
   scale = "1.5",
 })
 
+-- AUTO START
 hl.on("hyprland.start", function()
   hl.exec_cmd("runapp hypridle")
   hl.exec_cmd("runapp quickshell")
-  hl.exec_cmd("sleep 1 && meshell lock")
   hl.exec_cmd("runapp cursor-clip --daemon")
   hl.exec_cmd("systemctl --user start hyprpolkitagent")
 end)
 
+-- ANIMATIONS
+hl.animation({
+  leaf = "workspaces",
+  enabled = true,
+  speed = 5,
+  bezier = "default",
+  style = "slidevert",
+})
+
+-- RULES
 for i = 1, 5 do
   hl.workspace_rule({
     workspace = tostring(i),
@@ -54,35 +67,8 @@ hl.layer_rule({
   ignore_alpha = 0,
 })
 
-hl.animation({
-  leaf = "workspaces",
-  enabled = true,
-  speed = 5,
-  bezier = "default",
-  style = "slidevert",
-})
-
-if hl.plugin.dynamic_cursors ~= nil then
-  hl.config({
-    plugin = {
-      dynamic_cursors = {
-        enabled = true,
-        mode = "stretch",
-        threshold = 2,
-
-        shake = {
-          enabled = false,
-        },
-      },
-    },
-  })
-end
-
+-- CONFIGURATION
 hl.config({
-  debug = {
-    disable_logs = false,
-  },
-
   xwayland = {
     force_zero_scaling = true,
   },
@@ -90,18 +76,6 @@ hl.config({
   master = {
     mfact = 0.65,
   },
-  --
-  -- plugin = {
-  --   dynamic_cursors = {
-  --     enabled = true,
-  --     mode = "stretch",
-  --     threshold = 2,
-  --
-  --     shake = {
-  --       enabled = false,
-  --     },
-  --   },
-  -- },
 
   general = {
     layout = "master",
@@ -119,14 +93,12 @@ hl.config({
     rounding = tonumber(layout.border.radius.size),
 
     blur = {
-      -- enabled = true,
       size = tonumber(layout.blur.size),
       passes = tonumber(layout.blur.passes),
       popups = true,
     },
 
     shadow = {
-      -- enabled = true,
       range = 15,
       color = colors.background_dark,
     },
@@ -139,33 +111,56 @@ hl.config({
   },
 })
 
--- ---------- KEYBINDINGS ---------- #
-local mod = "SUPER"
-local secondaryMod = "SUPER + SHIFT"
-
-hl.bind(mod .. " + T", hl.dsp.global("meshell:test"))
-hl.bind(mod .. " + S", hl.dsp.global("meshell:bar"))
-hl.bind(mod .. " + P", hl.dsp.global("meshell:powerMenu"))
-hl.bind(mod .. " + C", hl.dsp.global("meshell:pickHexColorCopy"))
+-- KEYBINDINGS
+-- stylua: ignore start
+hl.bind(mod .. " + T",            hl.dsp.global("meshell:test"))
+hl.bind(mod .. " + S",            hl.dsp.global("meshell:bar"))
+hl.bind(mod .. " + P",            hl.dsp.global("meshell:powerMenu"))
+hl.bind(mod .. " + C",            hl.dsp.global("meshell:pickHexColorCopy"))
 
 -- General
-hl.bind(mod .. " + Return", hl.dsp.exec_cmd("runapp " .. terminal))
-hl.bind(mod .. " + B", hl.dsp.exec_cmd("runapp " .. browser))
-hl.bind(mod .. " + Y", hl.dsp.exec_cmd("runapp firefox"))
-hl.bind(mod .. " + R", hl.dsp.exec_cmd("runapp " .. appLauncher))
-hl.bind(secondaryMod .. " + T", hl.dsp.exec_cmd(themeSwitcher))
-hl.bind(secondaryMod .. " + W", hl.dsp.exec_cmd(wallpaperSwitcher))
-hl.bind(mod .. " + E", hl.dsp.exec_cmd("runapp " .. fileManager))
+hl.bind(mod .. " + Return",       hl.dsp.exec_cmd("runapp " .. terminal))
+hl.bind(mod .. " + B",            hl.dsp.exec_cmd("runapp " .. browser))
+hl.bind(mod .. " + R",            hl.dsp.exec_cmd("runapp " .. appLauncher))
+hl.bind(mod .. " + E",            hl.dsp.exec_cmd("runapp " .. fileManager))
+hl.bind(mod .. " + ALT + V",      hl.dsp.exec_cmd("runapp cursor-clip"))
 
-hl.bind(mod .. " + Q", hl.dsp.window.close())
-hl.bind(secondaryMod .. " + Q", hl.dsp.exec_cmd("hyprshutdown"))
+hl.bind(mod .. " + Q",            hl.dsp.window.close())
+hl.bind(secondaryMod .. " + Q",   hl.dsp.exec_cmd("hyprshutdown"))
 
-hl.bind(mod .. " + ALT + V", hl.dsp.exec_cmd("runapp cursor-clip"))
+hl.bind(mod .. " + M",            hl.dsp.layout("swapwithmaster"))
 
-hl.bind(mod .. " + V", hl.dsp.window.float())
-hl.bind(mod .. " + F", hl.dsp.window.fullscreen({ mode = "maximized" }))
-hl.bind(secondaryMod .. " + F", hl.dsp.window.fullscreen({ mode = "fullscreen" }))
+-- Windows
+hl.bind(mod .. " + V",            hl.dsp.window.float())
+hl.bind(mod .. " + F",            hl.dsp.window.fullscreen({ mode = "maximized" }))
+hl.bind(secondaryMod .. " + F",   hl.dsp.window.fullscreen({ mode = "fullscreen" }))
 
+hl.bind(mod .. " + H",            hl.dsp.focus({ direction = "l" }))
+hl.bind(mod .. " + J",            hl.dsp.focus({ direction = "d" }))
+hl.bind(mod .. " + K",            hl.dsp.focus({ direction = "u" }))
+hl.bind(mod .. " + L",            hl.dsp.focus({ direction = "r" }))
+
+hl.bind(mod .. " + mouse:272",    hl.dsp.window.drag(), { mouse = true })
+hl.bind(mod .. " + mouse:273",    hl.dsp.window.resize(), { mouse = true })
+
+hl.bind(secondaryMod .. " + H",   hl.dsp.window.move({ direction = "l" }))
+hl.bind(secondaryMod .. " + J",   hl.dsp.window.move({ direction = "d" }))
+hl.bind(secondaryMod .. " + K",   hl.dsp.window.move({ direction = "u" }))
+hl.bind(secondaryMod .. " + L",   hl.dsp.window.move({ direction = "r" }))
+
+-- Workspaces
+hl.bind(mod .. " + mouse_up",     hl.dsp.focus({ workspace = "e-1" }))
+hl.bind(mod .. " + mouse_down",   hl.dsp.focus({ workspace = "e+1" }))
+
+for i = 1, 10 do
+  local key = i % 10
+
+  hl.bind(mod .. " + " .. key, hl.dsp.focus({ workspace = i }))
+  hl.bind(secondaryMod .. " + " .. key, hl.dsp.window.move({ workspace = i }))
+end
+-- stylua: ignore end
+
+-- PLUGINS
 if hl.plugin.hyprcapture ~= nil then
   hl.config({
     plugin = {
@@ -185,35 +180,20 @@ if hl.plugin.hyprcapture ~= nil then
   })
 
   hl.bind(secondaryMod .. " + S", hl.plugin.hyprcapture.open)
-  -- bind = SUPER SHIFT, W, hyprcapture:open,window
-  -- bind = SUPER SHIFT, F, hyprcapture:open,fullscreen
 end
 
--- Layouts
-hl.bind(mod .. " + M", hl.dsp.layout("swapwithmaster"))
+if hl.plugin.dynamic_cursors ~= nil then
+  hl.config({
+    plugin = {
+      dynamic_cursors = {
+        enabled = true,
+        mode = "stretch",
+        threshold = 2,
 
--- Move Window Focus
-hl.bind(mod .. " + H", hl.dsp.focus({ direction = "l" }))
-hl.bind(mod .. " + J", hl.dsp.focus({ direction = "d" }))
-hl.bind(mod .. " + K", hl.dsp.focus({ direction = "u" }))
-hl.bind(mod .. " + L", hl.dsp.focus({ direction = "r" }))
-
--- Move Window
-hl.bind(secondaryMod .. " + H", hl.dsp.window.move({ direction = "l" }))
-hl.bind(secondaryMod .. " + J", hl.dsp.window.move({ direction = "d" }))
-hl.bind(secondaryMod .. " + K", hl.dsp.window.move({ direction = "u" }))
-hl.bind(secondaryMod .. " + L", hl.dsp.window.move({ direction = "r" }))
-
--- Switch Workspaces
-for i = 1, 10 do
-  local key = i % 10
-  hl.bind(mod .. " + " .. key, hl.dsp.focus({ workspace = i }))
-  hl.bind(secondaryMod .. " + " .. key, hl.dsp.window.move({ workspace = i }))
+        shake = {
+          enabled = false,
+        },
+      },
+    },
+  })
 end
-
--- Move & Resize WindowsMouse
-hl.bind(mod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
-hl.bind(mod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
-
-hl.bind(mod .. " + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
-hl.bind(mod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
