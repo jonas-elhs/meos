@@ -19,7 +19,7 @@
       disableConfigValidation = true;
 
       plugins = [
-        # inputs.hyprcapture.packages.${pkgs.stdenv.hostPlatform.system}.default
+        inputs.hyprcapture.packages.${pkgs.stdenv.hostPlatform.system}.default
         inputs.hypr-dynamic-cursors.packages.${pkgs.stdenv.hostPlatform.system}.hypr-dynamic-cursors
       ];
     };

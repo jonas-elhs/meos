@@ -57,7 +57,7 @@
       inputs.hyprland.follows = "hyprland";
     };
     hyprcapture = {
-      url = "github:gfhdhytghd/HyprCapture";
+      url = "github:gfhdhytghd/HyprCapture/hyprland-master";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.hyprland.follows = "hyprland";
     };
