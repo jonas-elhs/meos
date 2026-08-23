@@ -41,6 +41,7 @@
           ".config/mozilla/firefox"
           ".config/1Password"
           ".ssh"
+          ".local/share/Anki2"
 
           ".config/metemplate"
           ".config/nvim-colors/"
