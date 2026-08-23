@@ -11,7 +11,7 @@
         theme = "system";
         font-size = 12;
         font-family = "Maple Mono NF";
-        background-opacity = 0.4;
+        background-opacity = 0;
 
         window-padding-x = 8;
         window-padding-y = 8;

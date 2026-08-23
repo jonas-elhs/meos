@@ -256,6 +256,19 @@
         "type": "github"
       }
     },
+    "hyprglass": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1788009313,
+        "narHash": "sha256-f9fOVtpK5GY2mCZ3o/0361guQCwDbdoQJscr8MN77qg=",
+        "path": "/home/jonas/dev/hyprglass",
+        "type": "path"
+      },
+      "original": {
+        "path": "/home/jonas/dev/hyprglass",
+        "type": "path"
+      }
+    },
     "hyprgraphics": {
       "inputs": {
         "hyprutils": [
@@ -1054,6 +1067,7 @@
         "firefox-addons": "firefox-addons",
         "hypr-dynamic-cursors": "hypr-dynamic-cursors",
         "hyprcapture": "hyprcapture",
+        "hyprglass": "hyprglass",
         "hyprland": "hyprland",
         "meshell": "meshell",
         "metemplate": "metemplate",

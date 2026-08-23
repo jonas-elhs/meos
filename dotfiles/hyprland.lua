@@ -197,3 +197,18 @@ if hl.plugin.dynamic_cursors ~= nil then
     },
   })
 end
+
+if hl.plugin.hyprglass then
+  local hg = hl.plugin.hyprglass
+
+  hg.config({
+    default_theme = "dark",
+    default_preset = "glass",
+    layers = { enabled = 1 },
+  })
+
+  hg.preset("glass", {
+    blur_strength = 3,
+    blur_iterations = 4,
+  })
+end
