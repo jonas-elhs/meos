@@ -3,20 +3,20 @@ local colors = dofile(os.getenv("HOME") .. "/.config/hypr/colors.lua")
 
 local layout = {
   border = {
-    width = "2",
+    width = 2,
     radius = {
-      size = "10",
-      inner = "7",
+      size = 10,
+      inner = 7,
     },
   },
   gap = {
-    size = "20",
-    inner = "10",
+    size = 20,
+    inner = 10,
   },
   -- css: filter: blur(calc(size * sqrt(passes) * 0.85px)),
   blur = {
-    size = "5",
-    passes = "4",
+    size = 3,
+    passes = 4,
   },
 }
 
@@ -78,9 +78,9 @@ hl.config({
 
   general = {
     layout = "master",
-    gaps_in = tostring(tonumber(layout.gap.size) / 2),
+    gaps_in = layout.gap.size / 2,
     gaps_out = layout.gap.size,
-    border_size = tonumber(layout.border.width),
+    border_size = layout.border.width,
 
     col = {
       active_border = colors.accent,
@@ -89,13 +89,7 @@ hl.config({
   },
 
   decoration = {
-    rounding = tonumber(layout.border.radius.size),
-
-    blur = {
-      size = tonumber(layout.blur.size),
-      passes = tonumber(layout.blur.passes),
-      popups = true,
-    },
+    rounding = layout.border.radius.size,
 
     shadow = {
       range = 15,
