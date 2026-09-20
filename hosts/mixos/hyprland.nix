@@ -7,6 +7,7 @@
   hyprlandPackages = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system};
 in {
   environment.systemPackages = with pkgs; [
+    xdg-utils
     grim
     ffmpeg
     gpu-screen-recorder
@@ -25,19 +26,14 @@ in {
       plugins = [
         (pkgs.stdenv.mkDerivation {
           pname = "hyprglass";
-          version = "0.7.0";
-
+          version = "git";
           src = inputs.hyprglass;
+
           buildInputs = [hyprlandPackages.hyprland] ++ hyprlandPackages.hyprland.buildInputs;
           nativeBuildInputs = [pkgs.pkg-config];
 
           installPhase = ''
-            runHook preInstall
-
-            mkdir -p $out/lib
-            mv hyprglass.so "$out/lib/libhyprglass.so"
-
-            runHook postInstall
+            install -Dm755 hyprglass.so $out/lib/libhyprglass.so
           '';
         })
         inputs.hyprcapture.packages.${pkgs.stdenv.hostPlatform.system}.default
