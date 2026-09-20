@@ -56,7 +56,7 @@
       flake = false;
     };
     hyprcapture = {
-      url = "github:gfhdhytghd/HyprCapture/hyprland-master";
+      url = "path:/home/jonas/dev/HyprCapture";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.hyprland.follows = "hyprland";
     };
