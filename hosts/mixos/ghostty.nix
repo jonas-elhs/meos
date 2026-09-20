@@ -1,3 +1,4 @@
+# TODO: update wrapper to support declaring shaders declaratively
 {
   pkgs,
   wrappers,
@@ -23,7 +24,7 @@
         command = "fish";
         mouse-hide-while-typing = true;
 
-        custom-shader = "~/.config/ghostty/shaders/cursor_warp.glsl";
+        custom-shader = "~/dev/meos/dotfiles/ghostty_cursor_warp.glsl";
       };
     })
   ];
