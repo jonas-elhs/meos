@@ -1,5 +1,19 @@
--- VARIABLES
-local colors = dofile(os.getenv("HOME") .. "/.config/hypr/colors.lua")
+------------------
+---- MONITORS ----
+------------------
+
+hl.monitor({
+  output = "HDMI-A-2",
+  mode = "3840x2160@60", -- preferred
+  position = "0x0", -- auto
+  scale = "1.5",
+})
+
+-------------------
+---- VARIABLES ----
+-------------------
+
+local colors = require("colors")
 
 local layout = {
   border = {
@@ -20,67 +34,34 @@ local layout = {
   },
 }
 
+-- Programs
 local terminal = "ghostty"
 local fileManager = "dolphin"
 local appLauncher = "fuzzel --launch-prefix=runapp"
 local browser = "firefox"
 
-local mod = "SUPER"
-local secondaryMod = "SUPER + SHIFT"
+-------------------
+---- AUTOSTART ----
+-------------------
 
--- MONITORS
-hl.monitor({
-  output = "HDMI-A-2",
-  mode = "3840x2160@60",
-  position = "0x0",
-  scale = "1.5",
-})
-
--- AUTO START
 hl.on("hyprland.start", function()
   hl.exec_cmd("runapp quickshell")
   hl.exec_cmd("runapp cursor-clip --daemon")
   hl.exec_cmd("systemctl --user start hyprpolkitagent")
 end)
 
--- ANIMATIONS
-hl.animation({
-  leaf = "workspaces",
-  enabled = true,
-  speed = 5,
-  bezier = "default",
-  style = "slidevert",
-})
+-----------------------
+---- LOOK AND FEEL ----
+-----------------------
 
--- RULES
-for i = 1, 5 do
-  hl.workspace_rule({
-    workspace = tostring(i),
-    persistent = true,
-  })
-end
-
-hl.layer_rule({
-  match = { namespace = "meshell-shell" },
-  blur = true,
-  ignore_alpha = 0,
-})
-
--- CONFIGURATION
 hl.config({
-  xwayland = {
-    force_zero_scaling = true,
-  },
-
-  master = {
-    mfact = 0.65,
-  },
-
   general = {
-    layout = "master",
     gaps_in = layout.gap.size / 2,
     gaps_out = layout.gap.size,
+
     border_size = layout.border.width,
+
+    resize_on_border = true,
 
     col = {
       active_border = colors.accent,
@@ -96,20 +77,83 @@ hl.config({
       color = colors.background_dark,
     },
   },
+})
 
-  misc = {
-    session_lock_xray = true,
-    disable_hyprland_logo = true,
-    disable_splash_rendering = true,
+--------------------
+---- ANIMATIONS ----
+--------------------
+-- TODO: do I really need all these curves??
+hl.curve("easeOutQuint", { type = "bezier", points = { { 0.23, 1 }, { 0.32, 1 } } })
+hl.curve("almostLinear", { type = "bezier", points = { { 0.5, 0.5 }, { 0.75, 1 } } })
+hl.curve("quick", { type = "bezier", points = { { 0.15, 0 }, { 0.1, 1 } } })
+hl.curve("spring", { type = "spring", mass = 1, stiffness = 238.1191, damping = 24.21279333 })
+
+hl.animation({ leaf = "global", enabled = true, speed = 10, bezier = "default" })
+
+hl.animation({ leaf = "windowsIn", enabled = true, speed = 4.1, spring = "spring", style = "popin 87%" })
+hl.animation({ leaf = "windowsOut", enabled = true, speed = 1.49, bezier = "almostLinear", style = "popin 87%" })
+hl.animation({ leaf = "windowsMove", enabled = true, speed = 4.79, spring = "spring" })
+
+hl.animation({ leaf = "layersIn", enabled = true, speed = 4, bezier = "easeOutQuint", style = "fade" })
+hl.animation({ leaf = "layersOut", enabled = true, speed = 1.5, bezier = "almostLinear", style = "fade" })
+
+hl.animation({ leaf = "fade", enabled = true, speed = 3.03, bezier = "quick" })
+hl.animation({ leaf = "fadeIn", enabled = true, speed = 1.73, bezier = "almostLinear" })
+hl.animation({ leaf = "fadeOut", enabled = true, speed = 1.46, bezier = "almostLinear" })
+hl.animation({ leaf = "fadeLayersIn", enabled = true, speed = 1.79, bezier = "almostLinear" })
+hl.animation({ leaf = "fadeLayersOut", enabled = true, speed = 1.39, bezier = "almostLinear" })
+
+hl.animation({ leaf = "border", enabled = true, speed = 5.39, bezier = "easeOutQuint" })
+
+hl.animation({ leaf = "workspacesIn", enabled = true, speed = 1.21, bezier = "almostLinear", style = "slidevert" })
+hl.animation({ leaf = "workspacesOut", enabled = true, speed = 1.94, bezier = "almostLinear", style = "slidevert" })
+
+------------------
+----  LAYOUT  ----
+------------------
+
+hl.config({
+  general = {
+    layout = "master",
+  },
+
+  master = {
+    mfact = 0.65,
   },
 })
 
--- KEYBINDINGS
+----------------
+----  MISC  ----
+----------------
+
+hl.config({
+  misc = {
+    session_lock_xray = true,
+  },
+})
+
+--------------------
+----  XWAYLAND  ----
+--------------------
+
+hl.config({
+  xwayland = {
+    force_zero_scaling = true,
+  },
+})
+
+------------------
+---- MAPPINGS ----
+------------------
+
+local mod = "SUPER"
+local secondaryMod = "SUPER + SHIFT"
+
 -- stylua: ignore start
-hl.bind(mod .. " + T",            hl.dsp.global("meshell:test"))
-hl.bind(mod .. " + S",            hl.dsp.global("meshell:bar"))
+-- hl.bind(mod .. " + T",            hl.dsp.global("meshell:test"))
+-- hl.bind(mod .. " + S",            hl.dsp.global("meshell:bar"))
 hl.bind(mod .. " + P",            hl.dsp.global("meshell:powerMenu"))
-hl.bind(mod .. " + C",            hl.dsp.global("meshell:pickHexColorCopy"))
+-- hl.bind(mod .. " + C",            hl.dsp.global("meshell:pickHexColorCopy"))
 
 -- General
 hl.bind(mod .. " + Return",       hl.dsp.exec_cmd("runapp " .. terminal))
@@ -153,15 +197,52 @@ for i = 1, 10 do
 end
 -- stylua: ignore end
 
--- PLUGINS
+---------------------------------------------
+---- WINDOW-, WORKSPACE- AND LAYER-RULES ----
+---------------------------------------------
+
+-- Ignore maximize requests from all apps
+hl.window_rule({
+  name = "suppress-maximize-events",
+  match = { class = ".*" },
+
+  suppress_event = "maximize",
+})
+
+-- Fix some dragging issues with XWayland
+hl.window_rule({
+  name = "fix-xwayland-drags",
+  match = {
+    class = "^$",
+    title = "^$",
+    xwayland = true,
+    float = true,
+    fullscreen = false,
+    pin = false,
+  },
+
+  no_focus = true,
+})
+
+-- Five persistent workspaces
+for i = 1, 5 do
+  hl.workspace_rule({
+    workspace = tostring(i),
+    persistent = true,
+  })
+end
+
+-----------------
+---- PLUGINS ----
+-----------------
+
+-- HyprCapture
 if hl.plugin.hyprcapture ~= nil then
   hl.config({
     plugin = {
       hyprcapture = {
         window_background = "real",
-        notification_backend = "system",
         allow_quick = true,
-        fusion_mode = true,
         record_fps = 60,
         record_codec = "auto",
         record_window_fps_limit = 0,
@@ -172,9 +253,11 @@ if hl.plugin.hyprcapture ~= nil then
     },
   })
 
-  hl.bind(secondaryMod .. " + S", hl.plugin.hyprcapture.open)
+  hl.bind(mod .. " + S", hl.plugin.hyprcapture.open)
+  hl.bind(secondaryMod .. " + S", hl.plugin.hyprcapture.open_editor)
 end
 
+-- HyprDynamicCursors
 if hl.plugin.dynamic_cursors ~= nil then
   hl.config({
     plugin = {
@@ -191,6 +274,7 @@ if hl.plugin.dynamic_cursors ~= nil then
   })
 end
 
+-- HyprGlass
 if hl.plugin.hyprglass then
   local hg = hl.plugin.hyprglass
 
