@@ -14,10 +14,6 @@
       url = "github:BirdeeHub/nix-wrapper-modules";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    wrappers-hyprland = {
-      url = "github:jonas-elhs/nix-wrapper-modules/push-kpmnkpssnozs";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     wrappers-hypridle = {
       url = "github:jonas-elhs/nix-wrapper-modules/hypridle/init";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -52,11 +48,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprglass = {
-      url = "path:/home/jonas/dev/hyprglass";
+      url = "github:hyprnux/hyprglass";
       flake = false;
     };
     hyprcapture = {
-      url = "path:/home/jonas/dev/HyprCapture";
+      url = "github:gfhdhytghd/HyprCapture/hyprland-master";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.hyprland.follows = "hyprland";
     };

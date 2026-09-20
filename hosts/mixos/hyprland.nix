@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  wrappers,
   ...
 }: let
   hyprlandPackages = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system};
@@ -13,11 +14,12 @@ in {
   programs.hyprland = {
     enable = true;
     withUWSM = true;
-    package = inputs.wrappers-hyprland.wrappers.hyprland.wrap {
+    package = wrappers.hyprland.wrap {
       inherit pkgs;
 
       package = hyprlandPackages.hyprland;
       configFile = ../../dotfiles/hyprland.lua;
+      lua.dirs = ["/home/jonas/.config/hypr"];
       disableConfigValidation = true;
 
       plugins = [
