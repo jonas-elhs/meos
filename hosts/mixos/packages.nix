@@ -27,7 +27,6 @@
     inputs.metemplate.packages.x86_64-linux.default
 
     nasm
-    llvmPackages_latest.bintools-unwrapped
     lazygit
     uv
     teams-for-linux
