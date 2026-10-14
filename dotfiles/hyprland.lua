@@ -4,8 +4,8 @@
 
 hl.monitor({
   output = "HDMI-A-2",
-  mode = "3840x2160@60", -- preferred
-  position = "0x0", -- auto
+  mode = "preferred",
+  position = "auto",
   scale = "1.5",
 })
 
@@ -50,18 +50,18 @@ hl.on("hyprland.start", function()
   hl.exec_cmd("systemctl --user start hyprpolkitagent")
 end)
 
------------------------
----- LOOK AND FEEL ----
------------------------
+----------------
+---- CONFIG ----
+----------------
 
 hl.config({
   general = {
+    layout = "master",
+    resize_on_border = true,
+
     gaps_in = layout.gap.size / 2,
     gaps_out = layout.gap.size,
-
     border_size = layout.border.width,
-
-    resize_on_border = true,
 
     col = {
       active_border = colors.accent,
@@ -76,6 +76,18 @@ hl.config({
       range = 15,
       color = colors.background_dark,
     },
+  },
+
+  master = {
+    mfact = 0.65,
+  },
+
+  misc = {
+    session_lock_xray = true,
+  },
+
+  xwayland = {
+    force_zero_scaling = true,
   },
 })
 
@@ -109,45 +121,12 @@ hl.animation({ leaf = "workspacesIn", enabled = true, speed = 1.21, bezier = "al
 hl.animation({ leaf = "workspacesOut", enabled = true, speed = 1.94, bezier = "almostLinear", style = "slidevert" })
 
 ------------------
-----  LAYOUT  ----
-------------------
-
-hl.config({
-  general = {
-    layout = "master",
-  },
-
-  master = {
-    mfact = 0.65,
-  },
-})
-
-----------------
-----  MISC  ----
-----------------
-
-hl.config({
-  misc = {
-    session_lock_xray = true,
-  },
-})
-
---------------------
-----  XWAYLAND  ----
---------------------
-
-hl.config({
-  xwayland = {
-    force_zero_scaling = true,
-  },
-})
-
-------------------
 ---- MAPPINGS ----
 ------------------
 
 local mod = "SUPER"
 local secondaryMod = "SUPER + SHIFT"
+local tertiaryMod = "SUPER + CTRL"
 
 -- stylua: ignore start
 -- hl.bind(mod .. " + T",            hl.dsp.global("meshell:test"))
@@ -197,9 +176,9 @@ for i = 1, 10 do
 end
 -- stylua: ignore end
 
----------------------------------------------
----- WINDOW-, WORKSPACE- AND LAYER-RULES ----
----------------------------------------------
+---------------
+---- RULES ----
+---------------
 
 -- Ignore maximize requests from all apps
 hl.window_rule({
@@ -255,6 +234,9 @@ if hl.plugin.hyprcapture ~= nil then
 
   hl.bind(mod .. " + S", hl.plugin.hyprcapture.open)
   hl.bind(secondaryMod .. " + S", hl.plugin.hyprcapture.open_editor)
+  hl.bind(tertiaryMod .. " + S", function()
+    hl.plugin.hyprcapture.quick("fullscreen")
+  end)
 end
 
 -- HyprDynamicCursors
