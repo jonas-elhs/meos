@@ -269,5 +269,6 @@ if hl.plugin.hyprglass then
   hg.preset("glass", {
     blur_strength = 3,
     blur_iterations = 4,
+    noise_strength = 0.12,
   })
 end
