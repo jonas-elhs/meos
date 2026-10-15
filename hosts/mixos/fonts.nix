@@ -10,7 +10,7 @@
         owner = "subframe7536";
         repo = "maple-font";
         rev = "variable";
-        hash = "sha256-a5lLc+/t1lcLTyEdtM48O7x3tMo75Wz8p0ZddhOiNZE=";
+        hash = "sha256-cWLlmLkjrpKUsnMRrgCXVGaZl4eHlbfTuEmsEIk3Tvw=";
       };
 
       nativeBuildInputs = with pkgs.python3Packages; [

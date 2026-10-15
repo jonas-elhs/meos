@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  pkgs-master,
   ...
 }: {
   programs._1password-gui.enable = true;
@@ -35,7 +36,7 @@
     davinci-resolve
     mpv
     pkg-config
-    anki
+    pkgs-master.anki
 
     wl-clipboard
     cursor-clip

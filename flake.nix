@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-master.url = "github:NixOS/nixpkgs/master";
 
     preservation.url = "github:nix-community/preservation";
     disko = {
@@ -12,10 +13,6 @@
 
     wrappers = {
       url = "github:BirdeeHub/nix-wrapper-modules";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    wrappers-hypridle = {
-      url = "github:jonas-elhs/nix-wrapper-modules/hypridle/init";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -85,6 +82,7 @@
       specialArgs = {
         inherit inputs;
         inherit (inputs.wrappers) wrappers;
+        pkgs-master = inputs.nixpkgs-master.legacyPackages.x86_64-linux;
       };
       modules = lib.flatten [
         (importTree ./hosts/${host})
