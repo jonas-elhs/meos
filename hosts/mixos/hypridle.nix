@@ -1,11 +1,4 @@
-{inputs, ...}: {
-  imports = [
-    (inputs.wrappers-hypridle.lib.getInstallModule {
-      name = "hypridle";
-      value = inputs.wrappers-hypridle.lib.wrapperModules.hypridle;
-    })
-  ];
-
+{
   wrappers.hypridle = {
     enable = true;
 

@@ -1,58 +1,48 @@
 # TODO: figure color configuration out
 {
-  lib,
-  pkgs,
-  wrappers,
-  ...
-}: {
-  environment.systemPackages = [
-    (wrappers.fish.wrap {
-      inherit pkgs;
+  wrappers.fish = {
+    enable = true;
 
-      plugins = with pkgs.fishPlugins; [
-        autopair
-      ];
-      shellAliases = {
-        # List files on tmpfs
-        lsTmpFiles = "sudo fd --one-file-system --base-directory / --type f --hidden --exclude '{tmp,etc/passwd}'";
-      };
-      configFile.content = lib.concatStringsSep "\n" [
-        ''
-          # Config
-          fish_vi_key_bindings
-          set -g fish_autosuggestion_enabled 0
-          set -g fish_greeting
+    shellAliases = {
+      # List files on tmpfs
+      lsTmpFiles = "sudo fd --one-file-system --base-directory / --type f --hidden --exclude '{tmp,etc/passwd}'";
+    };
+    configFile.content = builtins.concatStringsSep "\n" [
+      ''
+        # Config
+        fish_vi_key_bindings
+        set -g fish_autosuggestion_enabled 0
+        set -g fish_greeting
 
-          # Syntax Highlighting
-          set -g fish_color_autosuggestion brblack
-          set -g fish_color_cancel -r
-          set -g fish_color_command --reset
-          set -g fish_color_comment red
-          set -g fish_color_cwd green
-          set -g fish_color_cwd_root red
-          set -g fish_color_end green
-          set -g fish_color_error brred
-          set -g fish_color_escape brcyan
-          set -g fish_color_history_current --bold
-          set -g fish_color_host --reset
-          set -g fish_color_host_remote yellow
-          set -g fish_color_normal --reset
-          set -g fish_color_operator brcyan
-          set -g fish_color_param cyan
-          set -g fish_color_quote yellow
-          set -g fish_color_redirection cyan --bold
-          set -g fish_color_search_match white --background=brblack
-          set -g fish_color_selection white --bold --background=brblack
-          set -g fish_color_status red
-          set -g fish_color_user brgreen
-          set -g fish_color_valid_path --underline
-          set -g fish_pager_color_description yellow -i
-          set -g fish_pager_color_prefix --bold --underline
-          set -g fish_pager_color_progress brwhite --background=cyan
-          set -g fish_pager_color_selected_background -r
-        ''
-        (builtins.readFile ../../dotfiles/fish_prompt.fish)
-      ];
-    })
-  ];
+        # Syntax Highlighting
+        set -g fish_color_autosuggestion brblack
+        set -g fish_color_cancel -r
+        set -g fish_color_command --reset
+        set -g fish_color_comment red
+        set -g fish_color_cwd green
+        set -g fish_color_cwd_root red
+        set -g fish_color_end green
+        set -g fish_color_error brred
+        set -g fish_color_escape brcyan
+        set -g fish_color_history_current --bold
+        set -g fish_color_host --reset
+        set -g fish_color_host_remote yellow
+        set -g fish_color_normal --reset
+        set -g fish_color_operator brcyan
+        set -g fish_color_param cyan
+        set -g fish_color_quote yellow
+        set -g fish_color_redirection cyan --bold
+        set -g fish_color_search_match white --background=brblack
+        set -g fish_color_selection white --bold --background=brblack
+        set -g fish_color_status red
+        set -g fish_color_user brgreen
+        set -g fish_color_valid_path --underline
+        set -g fish_pager_color_description yellow -i
+        set -g fish_pager_color_prefix --bold --underline
+        set -g fish_pager_color_progress brwhite --background=cyan
+        set -g fish_pager_color_selected_background -r
+      ''
+      (builtins.readFile ../../dotfiles/fish_prompt.fish)
+    ];
+  };
 }

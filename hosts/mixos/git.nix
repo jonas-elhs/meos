@@ -1,18 +1,12 @@
 {
-  pkgs,
-  wrappers,
-  ...
-}: {
-  environment.systemPackages = [
-    (wrappers.git.wrap {
-      inherit pkgs;
+  wrappers.git = {
+    enable = true;
 
-      settings = {
-        user = {
-          name = "jonas-elhs";
-          email = "jonas.elhs@outlook.com";
-        };
+    settings = {
+      user = {
+        name = "jonas-elhs";
+        email = "jonas.elhs@outlook.com";
       };
-    })
-  ];
+    };
+  };
 }

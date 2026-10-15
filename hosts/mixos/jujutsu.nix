@@ -1,18 +1,12 @@
 {
-  pkgs,
-  wrappers,
-  ...
-}: {
-  environment.systemPackages = [
-    (wrappers.jujutsu.wrap {
-      inherit pkgs;
+  wrappers.jujutsu = {
+    enable = true;
 
-      settings = {
-        user = {
-          name = "jonas-elhs";
-          email = "jonas.elhs@outlook.com";
-        };
+    settings = {
+      user = {
+        name = "jonas-elhs";
+        email = "jonas.elhs@outlook.com";
       };
-    })
-  ];
+    };
+  };
 }

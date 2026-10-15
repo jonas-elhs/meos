@@ -91,6 +91,8 @@
         inputs.preservation.nixosModules.default
         inputs.nix-index-database.nixosModules.default
 
+        (builtins.attrValues inputs.wrappers.nixosModules)
+
         {
           options = {
             preferences = {
