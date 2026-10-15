@@ -26,7 +26,7 @@
     };
 
     meshell = {
-      url = "github:jonas-elhs/meshell";
+      url = "path:/home/jonas/dev/meshell2";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.wrappers.follows = "wrappers";
     };

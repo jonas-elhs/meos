@@ -1,7 +1,6 @@
 {
   pkgs,
   inputs,
-  pkgs-master,
   ...
 }: {
   programs._1password-gui.enable = true;
@@ -23,8 +22,7 @@
     cmake
 
     inputs.mevim.packages.x86_64-linux.default
-    inputs.meshell.packages.x86_64-linux.cli
-    inputs.meshell.packages.x86_64-linux.quickshell
+    inputs.meshell.packages.x86_64-linux.default
     inputs.metemplate.packages.x86_64-linux.default
 
     nasm
@@ -36,7 +34,7 @@
     davinci-resolve
     mpv
     pkg-config
-    pkgs-master.anki
+    anki
 
     wl-clipboard
     cursor-clip
